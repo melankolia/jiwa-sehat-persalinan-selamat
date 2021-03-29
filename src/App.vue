@@ -4,9 +4,30 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view />
+    <transition :name="transitionName">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      transitionName: "",
+    };
+  },
+  watch: {
+    $route(to, from) {
+      if (to.meta.stack > from.meta.stack) {
+        this.transitionName = "slide-left";
+      } else {
+        this.transitionName = "slide-right";
+      }
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
