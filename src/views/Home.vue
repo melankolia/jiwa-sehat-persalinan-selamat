@@ -11,7 +11,19 @@
           <img class="image-health" src="../assets/health.png" alt="unsri" />
         </div>
       </div>
-      <img class="logo" src="../assets/logo-sementara.png" alt="unsri" />
+      <div class="d-flex flew-row justify-center">
+        <img class="logo flowers" src="../assets/flowers.png" alt="unsri" />
+        <img
+          class="logo girls"
+          src="../assets/logo-sementara.png"
+          alt="unsri"
+        />
+        <img
+          class="logo flowers flowers-2"
+          src="../assets/flowers.png"
+          alt="unsri"
+        />
+      </div>
     </div>
     <div class="flex-grow-1 px-6" style="max-height: 30vh">
       <div
@@ -70,7 +82,18 @@ export default {
 }
 
 .logo {
-  width: 78%;
   filter: brightness(0) invert(1);
+}
+
+.flowers {
+  width: 18%;
+}
+
+.flowers-2 {
+  transform: scaleX(-1);
+}
+
+.girls {
+  width: 60%;
 }
 </style>
