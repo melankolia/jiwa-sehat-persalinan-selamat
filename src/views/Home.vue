@@ -3,14 +3,14 @@
     <div
       class="pink accent-1 flex-grow-1 d-flex justify-center align-center first-container"
     >
-      <div class="super-container d-flex flex-row align-self-start">
+      <!-- <div class="super-container d-flex flex-row align-self-start">
         <div class="container-box d-flex justify-center align-center mx-3">
           <img class="image-circle" src="../assets/unsri.png" alt="unsri" />
         </div>
         <div class="container-box d-flex justify-center align-center mr-2">
           <img class="image-health" src="../assets/health.png" alt="unsri" />
         </div>
-      </div>
+      </div> -->
       <div class="d-flex flew-row justify-center">
         <img class="logo flowers" src="../assets/flowers.png" alt="unsri" />
         <img
