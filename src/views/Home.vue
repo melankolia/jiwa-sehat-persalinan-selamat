@@ -35,8 +35,13 @@
           <br />
           <span class="font-weight-reguler">Jiwa Sehat Persalinan Selamat</span>
         </p>
-        <v-btn @click="goToAgreement" class="px-10 py-6 pink accent-1" rounded>
-          <span class="font-weight-bold text-button white--text"> Masuk </span>
+        <v-btn
+          @click="goToAgreement"
+          class="px-10 py-6 pink accent-1"
+          outlined
+          rounded
+        >
+          <span class="white--text button font-weight-bold"> Masuk </span>
         </v-btn>
       </div>
     </div>

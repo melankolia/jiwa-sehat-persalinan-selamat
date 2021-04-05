@@ -20,12 +20,16 @@
           >
         </p>
       </div>
-      <!-- <v-checkbox v-model="agreement" color="primary">
-        <template #label>
-          <span class="caption text-body-2 font-weight-bold blue-grey--text darken-2">Ya, Saya Setuju</span>
-        </template>
-      </v-checkbox> -->
       <v-divider />
+      <v-checkbox v-model="agreement" color="primary">
+        <template #label>
+          <span
+            class="caption text-body-2 font-weight-bold blue-grey--text text--darken-2"
+          >
+            Ya, Saya Setuju
+          </span>
+        </template>
+      </v-checkbox>
       <div class="d-flex flex-row flex-grow-1 justify-end align-end">
         <v-btn
           @click="handleBack"
@@ -36,7 +40,13 @@
         >
           <span class="button font-weight-medium"> Tidak Setuju </span>
         </v-btn>
-        <v-btn class="py-5 px-6 pink accent-1" outlined rounded>
+        <v-btn
+          class="py-5 px-6"
+          :disabled="!isAgree"
+          rounded
+          depressed
+          color="pink accent-1"
+        >
           <span class="white--text button font-weight-medium"> Setuju </span>
         </v-btn>
       </div>
@@ -60,6 +70,11 @@ export default {
   methods: {
     handleBack() {
       this.$router.replace({ name: HOME });
+    },
+  },
+  computed: {
+    isAgree() {
+      return this.agreement;
     },
   },
 };
