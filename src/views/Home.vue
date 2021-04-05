@@ -35,7 +35,7 @@
           <br />
           <span class="font-weight-reguler">Jiwa Sehat Persalinan Selamat</span>
         </p>
-        <v-btn class="px-10 py-6 pink accent-1" rounded>
+        <v-btn @click="goToAgreement" class="px-10 py-6 pink accent-1" rounded>
           <span class="font-weight-bold text-button white--text"> Masuk </span>
         </v-btn>
       </div>
@@ -44,8 +44,15 @@
 </template>
 
 <script>
+import { AGREEMENT } from "@/router/name.types";
+
 export default {
   name: "Home",
+  methods: {
+    goToAgreement() {
+      this.$router.push({ name: AGREEMENT });
+    },
+  },
 };
 </script>
 
