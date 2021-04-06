@@ -1,8 +1,9 @@
 const TheContainer = () => import("@/containers/index");
 const Home = () => import("@/views/Home");
 const Agreement = () => import("@/views/Agreement");
+const Identity = () => import("@/views/Identity");
 
-import { HOME, AGREEMENT } from "./name.types";
+import { HOME, AGREEMENT, IDENTITY } from "./name.types";
 
 export const routes = [
   {
@@ -16,6 +17,7 @@ export const routes = [
         meta: {
           title: HOME,
           stack: 1,
+          text: null,
         },
       },
       {
@@ -25,6 +27,17 @@ export const routes = [
         meta: {
           title: AGREEMENT,
           stack: 2,
+          text: "Lembar Persetujuan",
+        },
+      },
+      {
+        path: "/identity",
+        name: IDENTITY,
+        component: Identity,
+        meta: {
+          title: IDENTITY,
+          stack: 3,
+          text: "Identitas Responden",
         },
       },
     ],
