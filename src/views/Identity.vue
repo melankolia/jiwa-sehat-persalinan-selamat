@@ -8,6 +8,7 @@
       @submit.prevent="onSubmit()"
     >
       <v-text-field
+        v-model="initialName"
         prepend-icon="person"
         label="Inisial Nama"
         color="secondary"
@@ -16,6 +17,7 @@
         :rules="rules"
       />
       <v-text-field
+        v-model="age"
         prepend-icon="people"
         label="Usia"
         color="secondary"
@@ -25,14 +27,17 @@
         type="number"
       />
       <v-text-field
+        v-model="gestationalAge"
         prepend-icon="pregnant_woman"
-        label="Usia Kandungan"
+        label="Usia Kandungan (Minggu)"
         color="secondary"
         filled
         rounded
         :rules="rules"
       />
-      <v-text-field
+      <v-select
+        v-model="education"
+        :items="educationList"
         prepend-icon="school"
         label="Pendidikan Terakhir"
         color="secondary"
@@ -40,13 +45,17 @@
         rounded
         :rules="rules"
       />
-      <v-text-field
+      <v-select
+        v-model="salaryRange"
+        :items="salaryRangeList"
         prepend-icon="paid"
         label="Tingkat Pendapatan"
         color="secondary"
         filled
         rounded
         :rules="rules"
+        item-text="name"
+        item-value="value"
       />
     </v-form>
     <v-divider />
@@ -82,6 +91,24 @@ export default {
     return {
       valid: false,
       rules: [(v) => !!v || "Field Harus Diisi!"],
+      educationList: ["SD", "SMP", "SMA", "D3", "S1"],
+      salaryRangeList: [
+        {
+          name: "< 3 Juta",
+          value: "<3",
+        },
+        {
+          name: ">= 3 Juta",
+          value: "3>=",
+        },
+      ],
+
+      // Form properties
+      initialName: null,
+      age: null,
+      gestationalAge: null,
+      education: null,
+      salaryRange: null,
     };
   },
   methods: {
@@ -90,7 +117,14 @@ export default {
     },
     onSubmit() {
       if (this.$refs.form.validate()) {
-        console.log("VALIDATE");
+        const payload = {
+          initialName: this.initialName,
+          age: this.age,
+          gestationalAge: this.gestationalAge,
+          education: this.education,
+          salaryRange: this.salaryRange,
+        };
+        console.log(payload);
       }
     },
   },
