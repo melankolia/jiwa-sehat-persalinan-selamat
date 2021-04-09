@@ -12,7 +12,7 @@
         yang dilakukan oleh saudari Teta Apriliana, Mahasiswa Program Studi Ilmu
         Keperawatan Fakultas Kedokteran Universitas Sriwijaya dengan judul
         <span class="font-weight-bold">
-          “Perancangan Aplikasi Berbasis Website JSPS (Jiwa Sehat Persalinan
+          “Pengaruh Aplikasi Berbasis Website JSPS (Jiwa Sehat Persalinan
           Selamat) terhadap Perubahan Tingkat Ansietas Ibu Primigravida
           Menghadapi Persalinan”.</span
         >
