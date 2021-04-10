@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import { AGREEMENT } from "@/router/name.types";
+import { AGREEMENT, PRETEST } from "@/router/name.types";
 
 export default {
   data() {
@@ -125,6 +125,7 @@ export default {
           salaryRange: this.salaryRange,
         };
         console.log(payload);
+        this.$router.replace({ name: PRETEST });
       }
     },
   },

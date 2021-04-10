@@ -2,8 +2,9 @@ const TheContainer = () => import("@/containers/index");
 const Home = () => import("@/views/Home");
 const Agreement = () => import("@/views/Agreement");
 const Identity = () => import("@/views/Identity");
+const Pretest = () => import("@/views/Pretest/CoverScreen");
 
-import { HOME, AGREEMENT, IDENTITY } from "./name.types";
+import { HOME, AGREEMENT, IDENTITY, PRETEST } from "./name.types";
 
 export const routes = [
   {
@@ -38,6 +39,16 @@ export const routes = [
           title: IDENTITY,
           stack: 3,
           text: "Identitas Responden",
+        },
+      },
+      {
+        path: "/pre-test",
+        name: PRETEST,
+        component: Pretest,
+        meta: {
+          title: PRETEST,
+          stack: 4,
+          text: "Kueioner Pre-test",
         },
       },
     ],
