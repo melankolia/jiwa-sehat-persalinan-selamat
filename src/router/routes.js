@@ -6,8 +6,17 @@ const Pretest = () => import("@/views/Pretest/CoverScreen");
 const PretestStepper = () => import("@/views/Pretest");
 const Screening = () => import("@/views/Screening/CoverScreen");
 const ScreeningStepper = () => import("@/views/Screening");
+const Posttest = () => import("@/views/Posttest/CoverScreen");
+const PosttestStepper = () => import("@/views/Posttest");
 
-import { HOME, AGREEMENT, IDENTITY, PRETEST, SCREENING } from "./name.types";
+import {
+  HOME,
+  AGREEMENT,
+  IDENTITY,
+  PRETEST,
+  SCREENING,
+  POSTTEST,
+} from "./name.types";
 
 export const routes = [
   {
@@ -100,6 +109,36 @@ export const routes = [
               title: SCREENING.ROOT,
               stack: 6,
               text: "Screening",
+            },
+          },
+        ],
+      },
+      {
+        path: "/post-test",
+        component: {
+          render(c) {
+            return c("router-view");
+          },
+        },
+        children: [
+          {
+            path: "",
+            name: POSTTEST.STEPPER,
+            component: PosttestStepper,
+            meta: {
+              title: POSTTEST.ROOT,
+              stack: 11,
+              text: "Post-test",
+            },
+          },
+          {
+            path: "cover",
+            name: POSTTEST.COVER,
+            component: Posttest,
+            meta: {
+              title: POSTTEST.ROOT,
+              stack: 10,
+              text: "Post-test",
             },
           },
         ],

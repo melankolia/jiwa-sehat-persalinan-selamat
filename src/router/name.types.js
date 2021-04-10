@@ -14,6 +14,12 @@ const screening = "screening";
 export const SCREENING = {
   ROOT: `${screening}`,
   COVER: `${screening}.cover`,
-  STEPPER: `${screening}.stepper`
-}
-export const POSTTEST = "posttest";
+  STEPPER: `${screening}.stepper`,
+};
+
+const posttest = "posttest";
+export const POSTTEST = {
+  ROOT: `${posttest}`,
+  COVER: `${posttest}.cover`,
+  STEPPER: `${posttest}.stepper`,
+};

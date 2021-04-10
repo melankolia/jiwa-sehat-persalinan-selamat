@@ -101,7 +101,11 @@ export default {
         this.range[pointer].active = false;
         this.transitionName = "slide-right";
       } else {
-        this.$router.back();
+        this.formLoading = true;
+        setTimeout(() => {
+          this.formLoading = false;
+          this.$router.back();
+        }, 2000);
       }
     },
   },

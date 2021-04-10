@@ -35,15 +35,19 @@
 
 <script>
 const Segmented = () => import("@/components/SegmentedProgressBar");
-const First = () => import("@/views/Screening/Questions/first");
-const Second = () => import("@/views/Screening/Questions/second");
-import { POSTTEST } from "@/router/name.types";
+const First = () => import("@/views/Posttest/Questions/first");
+const Second = () => import("@/views/Posttest/Questions/second");
+const Third = () => import("@/views/Posttest/Questions/third");
+const Fourth = () => import("@/views/Posttest/Questions/fourth");
+// import { SCREENING } from "@/router/name.types";
 
 export default {
   components: {
     Segmented,
     First,
     Second,
+    Third,
+    Fourth,
   },
   data() {
     return {
@@ -56,6 +60,14 @@ export default {
         },
         {
           screen: "Second",
+          active: false,
+        },
+        {
+          screen: "Third",
+          active: false,
+        },
+        {
+          screen: "Fourth",
           active: false,
         },
       ],
@@ -79,7 +91,7 @@ export default {
         this.formLoading = true;
         setTimeout(() => {
           this.formLoading = false;
-          this.$router.push({ name: POSTTEST.COVER });
+          // this.$router.push({ name: SCREENING.COVER });
         }, 2000);
       }
     },
