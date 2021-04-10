@@ -125,7 +125,7 @@ export default {
           salaryRange: this.salaryRange,
         };
         console.log(payload);
-        this.$router.replace({ name: PRETEST });
+        this.$router.push({ name: PRETEST.COVER });
       }
     },
   },

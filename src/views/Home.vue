@@ -108,4 +108,13 @@ export default {
 .girls {
   width: 60%;
 }
+
+/* @font-face {
+  font-family: "CreditCardFont";
+  src: url("../../assets/fonts/credit-card.regular.ttf") format("truetype");
+}
+
+.absolute-coordinate {
+  font-family: "CreditCardFont", sans-serif !important;
+} */
 </style>

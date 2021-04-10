@@ -25,7 +25,7 @@ export default {
     return {
       transitionName: "",
       currentHeadRoute: this.$router?.currentRoute?.meta.text,
-      currentRoute: this.$router?.currentRoute?.name,
+      currentRoute: this.$router?.currentRoute?.meta.title,
     };
   },
   computed: {
@@ -34,7 +34,7 @@ export default {
     },
     isQuestion() {
       return (
-        this.currentRoute == PRETEST ||
+        this.currentRoute == PRETEST.ROOT ||
         this.currentRoute == SCREENING ||
         this.currentRoute == POSTTEST
       );
@@ -43,7 +43,7 @@ export default {
   watch: {
     $route(to, from) {
       this.currentHeadRoute = to.meta.text;
-      this.currentRoute = to.name;
+      this.currentRoute = to.meta.title;
       if (to.meta.stack > from.meta.stack) {
         this.transitionName = "slide-left";
       } else {
