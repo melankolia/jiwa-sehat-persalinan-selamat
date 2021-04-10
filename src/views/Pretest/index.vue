@@ -16,6 +16,7 @@
         outlined
         depressed
         rounded
+        :loading="backLoading"
       >
         <span class="button font-weight-medium"> Back </span>
       </v-btn>
@@ -53,6 +54,7 @@ export default {
     return {
       transitionName: "",
       formLoading: false,
+      backLoading: false,
       range: [
         {
           screen: "First",
@@ -101,9 +103,9 @@ export default {
         this.range[pointer].active = false;
         this.transitionName = "slide-right";
       } else {
-        this.formLoading = true;
+        this.backLoading = true;
         setTimeout(() => {
-          this.formLoading = false;
+          this.backLoading = false;
           this.$router.back();
         }, 2000);
       }
