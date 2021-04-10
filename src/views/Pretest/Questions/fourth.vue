@@ -1,7 +1,7 @@
 <template>
   <div class="pb-10 px-10">
     <div class="d-flex flex-column">
-      <p class="text-h5">Question 4</p>
+      <p class="text-h5">Pertanyaan 4</p>
       <p class="text-body-1 font-weight-regular">
         How often do you typically use our service ?
       </p>
@@ -105,9 +105,9 @@ export default {
 
 .checkbox-container {
   border-radius: 4px;
-  -webkit-box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.28);
-  -moz-box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.28);
-  box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.28);
+  -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.28);
+  -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.28);
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.28);
 }
 
 /* .background-div {

@@ -1,17 +1,17 @@
 <template>
   <Cover
-    title="Kuisioner Pre-test"
-    description="Dengan mengisi Kuesioner ini berarti Anda setuju menjadi responden
-          penelitian. Partisipasi Anda dalam mengisi kuesioner ini sangat
+    title="Screening"
+    description="Dengan mengisi Screening ini berarti Anda setuju menjadi responden
+          penelitian. Partisipasi Anda dalam mengisi screening ini sangat
           membantu saya untuk menyelesaikan penelitian"
-    titleButton="Isi Kuisioner"
+    titleButton="Isi Screening"
     :formLoading="formLoading"
     :handleNext="handleNext"
   />
 </template>
 
 <script>
-import { PRETEST } from "@/router/name.types";
+import { SCREENING } from "@/router/name.types";
 const Cover = () => import("@/components/CoverScreen");
 
 export default {
@@ -28,7 +28,7 @@ export default {
       this.formLoading = true;
       setTimeout(() => {
         this.formLoading = false;
-        this.$router.push({ name: PRETEST.STEPPER });
+        this.$router.push({ name: SCREENING.STEPPER });
       }, 2000);
     },
   },

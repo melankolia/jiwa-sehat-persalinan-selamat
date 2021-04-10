@@ -35,8 +35,8 @@ export default {
     isQuestion() {
       return (
         this.currentRoute == PRETEST.ROOT ||
-        this.currentRoute == SCREENING ||
-        this.currentRoute == POSTTEST
+        this.currentRoute == SCREENING.ROOT ||
+        this.currentRoute == POSTTEST.ROOT
       );
     },
   },

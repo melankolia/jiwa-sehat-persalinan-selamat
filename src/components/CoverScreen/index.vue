@@ -17,8 +17,12 @@
         class="px-10 py-6 pink accent-1"
         outlined
         rounded
+        :loading="formLoading"
+        dark
       >
-        <span class="white--text button font-weight-bold"> Isi Kuesioner </span>
+        <span class="white--text button font-weight-bold">
+          {{ titleButton }}
+        </span>
       </v-btn>
     </div>
   </div>
@@ -30,6 +34,8 @@ export default {
     title: { types: String, required: true, default: "Title" },
     description: { types: String, required: true, default: "Description" },
     handleNext: { types: Function, required: true, default: () => {} },
+    titleButton: { types: String, required: true, default: "Isi" },
+    formLoading: { types: Boolean, required: true, default: false },
   },
 };
 </script>
