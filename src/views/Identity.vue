@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column pa-10" style="height: 80vh">
+  <div class="d-flex flex-column pa-10" style="height: 76vh">
     <v-form
       id="check-form"
       ref="form"
@@ -34,6 +34,7 @@
         filled
         rounded
         :rules="rules"
+        type="number"
       />
       <v-select
         v-model="education"

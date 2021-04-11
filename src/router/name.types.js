@@ -23,3 +23,10 @@ export const POSTTEST = {
   COVER: `${posttest}.cover`,
   STEPPER: `${posttest}.stepper`,
 };
+
+const technique = "technique";
+export const TECHNIQUE = {
+  ROOT: `${technique}`,
+  LIST: `${technique}.list`,
+  DETAIL: `${technique}.detail`,
+};

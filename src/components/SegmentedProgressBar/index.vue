@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex py-12 px-10">
+  <div class="d-flex pt-8 pb-12 px-10">
     <div
       v-for="(e, i) in range"
       :key="i"

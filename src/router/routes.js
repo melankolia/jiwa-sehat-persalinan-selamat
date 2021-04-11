@@ -8,6 +8,7 @@ const Screening = () => import("@/views/Screening/CoverScreen");
 const ScreeningStepper = () => import("@/views/Screening");
 const Posttest = () => import("@/views/Posttest/CoverScreen");
 const PosttestStepper = () => import("@/views/Posttest");
+const Technique = () => import("@/views/Technique");
 
 import {
   HOME,
@@ -16,6 +17,7 @@ import {
   PRETEST,
   SCREENING,
   POSTTEST,
+  TECHNIQUE,
 } from "./name.types";
 
 export const routes = [
@@ -109,6 +111,26 @@ export const routes = [
               title: SCREENING.ROOT,
               stack: 6,
               text: "Screening",
+            },
+          },
+        ],
+      },
+      {
+        path: "/teknik",
+        component: {
+          render(c) {
+            return c("router-view");
+          },
+        },
+        children: [
+          {
+            path: "",
+            name: TECHNIQUE.LIST,
+            component: Technique,
+            meta: {
+              title: TECHNIQUE.LIST,
+              stack: 8,
+              text: "Teknik Mengatasi Kecemasan dalam Menghadapi Persalinan",
             },
           },
         ],

@@ -38,7 +38,7 @@
 const Segmented = () => import("@/components/SegmentedProgressBar");
 const First = () => import("@/views/Screening/Questions/first");
 const Second = () => import("@/views/Screening/Questions/second");
-import { POSTTEST } from "@/router/name.types";
+import { TECHNIQUE } from "@/router/name.types";
 
 export default {
   components: {
@@ -81,7 +81,7 @@ export default {
         this.formLoading = true;
         setTimeout(() => {
           this.formLoading = false;
-          this.$router.push({ name: POSTTEST.COVER });
+          this.$router.push({ name: TECHNIQUE.LIST });
         }, 2000);
       }
     },
