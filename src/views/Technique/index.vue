@@ -60,7 +60,13 @@
       <v-btn class="py-5 px-6 mx-2" color="pink accent-1" outlined rounded>
         <span class="button font-weight-medium"> Back </span>
       </v-btn>
-      <v-btn class="py-5 px-6" rounded depressed color="pink accent-1">
+      <v-btn
+        class="py-5 px-6"
+        rounded
+        depressed
+        color="pink accent-1"
+        @click="handleNext"
+      >
         <span class="white--text button font-weight-medium"> Continue </span>
       </v-btn>
     </div>
@@ -68,10 +74,18 @@
 </template>
 
 <script>
+import { POSTTEST } from "@/router/name.types";
+
 export default {
   methods: {
     handleClick(type) {
       console.log(type);
+    },
+    handleNext() {
+      setTimeout(() => {
+        this.formLoading = false;
+        this.$router.push({ name: POSTTEST.COVER });
+      }, 2000);
     },
   },
 };
