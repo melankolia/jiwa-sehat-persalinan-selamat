@@ -57,7 +57,13 @@
       </div>
     </v-card>
     <div class="d-flex flex-row flex-grow-1 justify-end align-end pb-6">
-      <v-btn class="py-5 px-6 mx-2" color="pink accent-1" outlined rounded>
+      <v-btn
+        class="py-5 px-6 mx-2"
+        color="pink accent-1"
+        outlined
+        rounded
+        @click="$router.back()"
+      >
         <span class="button font-weight-medium"> Back </span>
       </v-btn>
       <v-btn
@@ -66,6 +72,7 @@
         depressed
         color="pink accent-1"
         @click="handleNext"
+        :loading="formLoading"
       >
         <span class="white--text button font-weight-medium"> Continue </span>
       </v-btn>
@@ -77,6 +84,11 @@
 import { POSTTEST } from "@/router/name.types";
 
 export default {
+  data() {
+    return {
+      formLoading: false,
+    };
+  },
   methods: {
     handleClick(type) {
       console.log(type);
