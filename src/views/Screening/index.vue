@@ -2,6 +2,7 @@
   <div class="d-flex flex-column" style="height: 100vh">
     <div class="flex-grow-1">
       <Segmented :range="range" />
+      <Logo :isBorder="true" :top="8" :right="5" />
       <keep-alive>
         <transition :name="transitionName">
           <component :is="range[currentIndex - 1].screen" />
@@ -36,6 +37,7 @@
 
 <script>
 const Segmented = () => import("@/components/SegmentedProgressBar");
+const Logo = () => import("@/components/Logo");
 const First = () => import("@/views/Screening/Questions/first");
 const Second = () => import("@/views/Screening/Questions/second");
 import { TECHNIQUE } from "@/router/name.types";
@@ -45,6 +47,7 @@ export default {
     Segmented,
     First,
     Second,
+    Logo,
   },
   data() {
     return {

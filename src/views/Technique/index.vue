@@ -73,6 +73,7 @@
         color="pink accent-1"
         @click="handleNext"
         :loading="formLoading"
+        dark
       >
         <span class="white--text button font-weight-medium"> Continue </span>
       </v-btn>
@@ -94,6 +95,7 @@ export default {
       console.log(type);
     },
     handleNext() {
+      this.formLoading = true;
       setTimeout(() => {
         this.formLoading = false;
         this.$router.push({ name: POSTTEST.COVER });

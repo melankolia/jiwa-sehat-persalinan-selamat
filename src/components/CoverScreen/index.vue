@@ -1,5 +1,6 @@
 <template>
   <div class="d-flex flex-column" style="height: 100vh">
+    <Logo :isBorder="true" />
     <div>
       <img class="floral pb-10" src="../../assets/floral.jpg" alt="floral" />
     </div>
@@ -29,6 +30,7 @@
 </template>
 
 <script>
+const Logo = () => import("@/components/Logo");
 export default {
   props: {
     title: { types: String, required: true, default: "Title" },
@@ -36,6 +38,9 @@ export default {
     handleNext: { types: Function, required: true, default: () => {} },
     titleButton: { types: String, required: true, default: "Isi" },
     formLoading: { types: Boolean, required: true, default: false },
+  },
+  components: {
+    Logo,
   },
 };
 </script>
