@@ -9,6 +9,9 @@ const ScreeningStepper = () => import("@/views/Screening");
 const Posttest = () => import("@/views/Posttest/CoverScreen");
 const PosttestStepper = () => import("@/views/Posttest");
 const Technique = () => import("@/views/Technique");
+const FirstTechnique = () => import("@/views/Technique/Detail/First");
+const SecondTechnique = () => import("@/views/Technique/Detail/Second");
+const ThirdTechnique = () => import("@/views/Technique/Detail/Third");
 
 import {
   HOME,
@@ -133,6 +136,36 @@ export const routes = [
               text: "Teknik Mengatasi Kecemasan dalam Menghadapi Persalinan",
             },
           },
+          {
+            path: "first",
+            name: TECHNIQUE.DETAIL.FIRST,
+            component: FirstTechnique,
+            meta: {
+              title: TECHNIQUE.DETAIL.FIRST,
+              stack: 9,
+              text: "Relaksasi Napas Dalam",
+            },
+          },
+          {
+            path: "second",
+            name: TECHNIQUE.DETAIL.SECOND,
+            component: SecondTechnique,
+            meta: {
+              title: TECHNIQUE.DETAIL.SECOND,
+              stack: 10,
+              text: "Latihan Hipnotis Lima Jari",
+            },
+          },
+          {
+            path: "third",
+            name: TECHNIQUE.DETAIL.THIRD,
+            component: ThirdTechnique,
+            meta: {
+              title: TECHNIQUE.DETAIL.THIRD,
+              stack: 11,
+              text: "Relaksasi Otot Progresif (ROP)",
+            },
+          },
         ],
       },
       {
@@ -149,7 +182,7 @@ export const routes = [
             component: PosttestStepper,
             meta: {
               title: POSTTEST.ROOT,
-              stack: 11,
+              stack: 13,
               text: "Post-test",
             },
           },
@@ -159,7 +192,7 @@ export const routes = [
             component: Posttest,
             meta: {
               title: POSTTEST.ROOT,
-              stack: 10,
+              stack: 12,
               text: "Post-test",
             },
           },

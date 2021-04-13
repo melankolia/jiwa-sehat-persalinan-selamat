@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import { POSTTEST } from "@/router/name.types";
+import { POSTTEST, TECHNIQUE } from "@/router/name.types";
 
 export default {
   data() {
@@ -92,7 +92,13 @@ export default {
   },
   methods: {
     handleClick(type) {
-      console.log(type);
+      if (type == "relax") {
+        this.$router.push({ name: TECHNIQUE.DETAIL.FIRST });
+      } else if (type == "hand") {
+        this.$router.push({ name: TECHNIQUE.DETAIL.SECOND });
+      } else if (type == "muscle") {
+        this.$router.push({ name: TECHNIQUE.DETAIL.THIRD });
+      }
     },
     handleNext() {
       this.formLoading = true;

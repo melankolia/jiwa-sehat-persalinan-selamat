@@ -28,5 +28,9 @@ const technique = "technique";
 export const TECHNIQUE = {
   ROOT: `${technique}`,
   LIST: `${technique}.list`,
-  DETAIL: `${technique}.detail`,
+  DETAIL: {
+    FIRST: `${technique}.detail.first`,
+    SECOND: `${technique}.detail.second`,
+    THIRD: `${technique}.detail.third`,
+  },
 };

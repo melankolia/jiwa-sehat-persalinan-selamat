@@ -5,6 +5,9 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 // import "@/assets/stylesheets/index.css";
 
+// Prototyping
+Vue.prototype.$scrollToTop = () => window.scrollTo(0, 0);
+
 Vue.config.productionTip = false;
 
 new Vue({
