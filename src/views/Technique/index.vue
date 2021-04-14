@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column px-10 pt-6" style="height: 76vh">
+  <div class="d-flex flex-column px-10 pt-6" style="height: 80vh">
     <img
       src="@/assets/pregnant.jpg"
       alt="pregnant"
