@@ -34,3 +34,5 @@ export const TECHNIQUE = {
     THIRD: `${technique}.detail.third`,
   },
 };
+
+export const COMPLETED = "completed";

@@ -35,6 +35,23 @@
         <span class="white--text button font-weight-medium"> Simpan </span>
       </v-btn>
     </div>
+    <DialogCompleted
+      :visible="visible"
+      title="Terima Kasih !"
+      :description="dialogDescription"
+      :onClose="handleDialogClose"
+    >
+      <template #action>
+        <v-btn
+          block
+          outlined
+          class="mt-10"
+          color="white"
+          @click="handleDialogClose"
+          >OK</v-btn
+        >
+      </template>
+    </DialogCompleted>
   </div>
 </template>
 
@@ -45,11 +62,13 @@ const First = () => import("@/views/Posttest/Questions/first");
 const Second = () => import("@/views/Posttest/Questions/second");
 const Third = () => import("@/views/Posttest/Questions/third");
 const Fourth = () => import("@/views/Posttest/Questions/fourth");
-// import { SCREENING } from "@/router/name.types";
+const DialogCompleted = () => import("@/components/Dialog/Completed");
+import { HOME } from "@/router/name.types";
 
 export default {
   components: {
     Segmented,
+    DialogCompleted,
     First,
     Second,
     Third,
@@ -58,6 +77,8 @@ export default {
   },
   data() {
     return {
+      // Dialog properties
+      visible: false,
       transitionName: "",
       formLoading: false,
       backLoading: false,
@@ -88,10 +109,18 @@ export default {
       }
       return this.range.length;
     },
+    dialogDescription() {
+      return `Terima kasih telah meluangkan waktu anda menggunakan aplikasi ini. Partisipasi Anda dalam menggunakan aplikasi dan mengisi kuesioner ini sangat
+          membantu saya untuk menyelesaikan penelitian`;
+    },
   },
   methods: {
     handleAnswer(param) {
       console.log({ param });
+    },
+    handleDialogClose() {
+      this.$router.push({ name: HOME });
+      this.visible = false;
     },
     handleNext() {
       const pointer = this.currentIndex;
@@ -102,6 +131,7 @@ export default {
         this.formLoading = true;
         setTimeout(() => {
           this.formLoading = false;
+          this.visible = true;
           // this.$router.push({ name: SCREENING.COVER });
         }, 2000);
       }

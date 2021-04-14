@@ -57,7 +57,7 @@
       </div>
     </v-card>
     <div class="d-flex flex-row flex-grow-1 justify-end align-end pb-6">
-      <v-btn
+      <!-- <v-btn
         class="py-5 px-6 mx-2"
         color="pink accent-1"
         outlined
@@ -65,7 +65,7 @@
         @click="$router.back()"
       >
         <span class="button font-weight-medium"> Back </span>
-      </v-btn>
+      </v-btn> -->
       <v-btn
         class="py-5 px-6"
         rounded
