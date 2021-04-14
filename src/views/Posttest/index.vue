@@ -63,7 +63,7 @@ const Second = () => import("@/views/Posttest/Questions/second");
 const Third = () => import("@/views/Posttest/Questions/third");
 const Fourth = () => import("@/views/Posttest/Questions/fourth");
 const DialogCompleted = () => import("@/components/Dialog/Completed");
-import { HOME } from "@/router/name.types";
+// import { HOME } from "@/router/name.types";
 
 export default {
   components: {
@@ -119,7 +119,8 @@ export default {
       console.log({ param });
     },
     handleDialogClose() {
-      this.$router.push({ name: HOME });
+      this.$router.replace("/");
+      // this.$router.replace({ name: HOME });
       this.visible = false;
     },
     handleNext() {
@@ -132,7 +133,6 @@ export default {
         setTimeout(() => {
           this.formLoading = false;
           this.visible = true;
-          this.$router.replace({ name: HOME });
         }, 2000);
       }
     },
