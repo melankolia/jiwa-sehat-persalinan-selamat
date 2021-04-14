@@ -132,7 +132,7 @@ export default {
         setTimeout(() => {
           this.formLoading = false;
           this.visible = true;
-          // this.$router.push({ name: SCREENING.COVER });
+          this.$router.replace({ name: HOME });
         }, 2000);
       }
     },

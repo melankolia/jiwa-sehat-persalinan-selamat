@@ -27,7 +27,7 @@ export default {
     left: { type: Boolean, required: false, default: false },
     right: { type: Boolean, required: false, default: false },
     text: { type: Boolean, required: false, default: false },
-    color: { type: String, required: false, default: "secondary" }
-  }
+    color: { type: String, required: false, default: "secondary" },
+  },
 };
 </script>
