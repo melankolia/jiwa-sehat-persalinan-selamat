@@ -19,7 +19,7 @@
       <v-text-field
         v-model="age"
         prepend-icon="people"
-        label="Usia"
+        label="Usia (Tahun)"
         color="secondary"
         filled
         rounded

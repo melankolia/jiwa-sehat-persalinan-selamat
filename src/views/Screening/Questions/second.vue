@@ -6,7 +6,7 @@
         Perubahan-perubahan apa saja yang terjadi pada fisik Ibu selama hamil?
       </p>
       <v-textarea
-        v-model="answer2"
+        v-model="question2"
         auto-grow
         color="secondary"
         label="Jawaban"
@@ -22,13 +22,13 @@
 export default {
   data() {
     return {
-      answer2: null,
+      question2: null,
     };
   },
   watch: {
-    selected: {
+    question2: {
       handler(val) {
-        console.log(val);
+        this.debounce(() => this.$emit("answer", val));
       },
       deep: true,
     },

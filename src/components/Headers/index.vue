@@ -1,9 +1,15 @@
 <template>
-  <div class="pink accent-1 flex-grow-1 d-flex" style="height: 22vh">
+  <div
+    class="pink accent-1 flex-grow-1 d-flex flex-column justify-space-between"
+    style="height: 22vh"
+  >
     <Logo :isBorder="true" />
-    <p
-      class="headline white--text font-weight-medium align-self-end my-8 px-10"
-    >
+    <div class="d-flex flex-row">
+      <v-btn icon text dark class="ma-4" @click="$router.back()">
+        <v-icon dark> arrow_back_ios_new </v-icon>
+      </v-btn>
+    </div>
+    <p class="headline white--text font-weight-medium px-10">
       {{ text }}
     </p>
   </div>

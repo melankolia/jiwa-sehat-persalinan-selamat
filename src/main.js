@@ -8,6 +8,9 @@ import vuetify from "./plugins/vuetify";
 // Prototyping
 Vue.prototype.$scrollToTop = () => window.scrollTo(0, 0);
 
+// Vue Mixin
+import "./mixins";
+
 Vue.config.productionTip = false;
 
 new Vue({

@@ -7,7 +7,7 @@
       </p>
     </div>
     <v-textarea
-      v-model="answer"
+      v-model="question1"
       auto-grow
       color="secondary"
       label="Jawaban"
@@ -21,13 +21,13 @@
 export default {
   data() {
     return {
-      answer: "",
+      question1: "",
     };
   },
   watch: {
-    selected: {
+    question1: {
       handler(val) {
-        console.log(val);
+        this.debounce(() => this.$emit("answer", val));
       },
       deep: true,
     },

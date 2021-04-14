@@ -90,7 +90,7 @@ export default {
   watch: {
     selected: {
       handler(val) {
-        console.log(val);
+        this.$emit("answer", val);
       },
       deep: true,
     },
