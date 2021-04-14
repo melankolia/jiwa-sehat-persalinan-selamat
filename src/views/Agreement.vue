@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column pa-10" style="height: 80vh">
+  <div class="d-flex flex-column pa-10" style="height: 78vh">
     <p class="subtitle-1 font-weight-medium">Persetujuan Menjadi Responden</p>
     <div class="pb-4" style="overflow: scroll">
       <p

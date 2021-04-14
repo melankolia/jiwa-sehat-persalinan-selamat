@@ -1,5 +1,5 @@
 <template>
-  <div class="pink accent-1 flex-grow-1 d-flex" style="height: 20vh">
+  <div class="pink accent-1 flex-grow-1 d-flex" style="height: 22vh">
     <Logo :isBorder="true" />
     <p
       class="headline white--text font-weight-medium align-self-end my-8 px-10"
