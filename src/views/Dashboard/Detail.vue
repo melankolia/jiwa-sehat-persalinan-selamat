@@ -11,7 +11,7 @@
         v-if="!isAvailable"
       >
         <template v-slot:action>
-          <v-btn @click="cancelForm" color="default" class="px-10">
+          <v-btn @click="$router.back()" color="default" class="px-10">
             GO BACK
           </v-btn>
         </template>
@@ -141,6 +141,7 @@ export default {
   },
   data() {
     return {
+      id: this.$route.params?.secureId,
       show: false,
       show2: false,
       show3: false,
@@ -154,46 +155,9 @@ export default {
         gestationalAge: null,
         education: null,
         salaryRange: null,
-        pretestList: [
-          {
-            no: 1,
-            question: "Question 1",
-            answer: 1,
-            note: "Ringan",
-          },
-          {
-            no: 2,
-            question: "Question 2",
-            answer: 2,
-            note: "Sedang",
-          },
-        ],
-        screeningList: [
-          {
-            no: 1,
-            question: "Question 1",
-            answer: "Saya baik baik saja",
-          },
-          {
-            no: 2,
-            question: "Question 2",
-            answer: "Saya baik baik saja",
-          },
-        ],
-        postTestList: [
-          {
-            no: 1,
-            question: "Question 1",
-            answer: 1,
-            note: "Ringan",
-          },
-          {
-            no: 2,
-            question: "Question 2",
-            answer: 2,
-            note: "Sedang",
-          },
-        ],
+        pretestList: [],
+        screeningList: [],
+        postTestList: [],
       },
 
       // Subtable properties
@@ -210,6 +174,66 @@ export default {
         { text: "Jawaban", value: "answer", sortable: false },
       ],
     };
+  },
+  methods: {
+    async getList() {
+      this.isAvailable = false;
+      this.loading = true;
+      setTimeout(() => {
+        this.isAvailable = true;
+        this.loading = false;
+        this.item = {
+          initialName: "AA",
+          age: 21,
+          gestationalAge: 12,
+          education: "S1",
+          salaryRange: ">= 3 Juta",
+          pretestList: [
+            {
+              no: 1,
+              question: "Question 1",
+              answer: 1,
+              note: "Ringan",
+            },
+            {
+              no: 2,
+              question: "Question 2",
+              answer: 2,
+              note: "Sedang",
+            },
+          ],
+          screeningList: [
+            {
+              no: 1,
+              question: "Question 1",
+              answer: "Saya baik baik saja",
+            },
+            {
+              no: 2,
+              question: "Question 2",
+              answer: "Saya baik baik saja",
+            },
+          ],
+          postTestList: [
+            {
+              no: 1,
+              question: "Question 1",
+              answer: 1,
+              note: "Ringan",
+            },
+            {
+              no: 2,
+              question: "Question 2",
+              answer: 2,
+              note: "Sedang",
+            },
+          ],
+        };
+      }, 2000);
+    },
+  },
+  mounted() {
+    this.id && this.getList();
   },
 };
 </script>
