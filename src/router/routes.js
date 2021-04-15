@@ -12,6 +12,9 @@ const Technique = () => import("@/views/Technique");
 const FirstTechnique = () => import("@/views/Technique/Detail/First");
 const SecondTechnique = () => import("@/views/Technique/Detail/Second");
 const ThirdTechnique = () => import("@/views/Technique/Detail/Third");
+const Login = () => import("@/views/Login");
+const Dashboard = () => import("@/views/Dashboard");
+const Detail = () => import("@/views/Dashboard/Detail");
 
 import {
   HOME,
@@ -21,6 +24,8 @@ import {
   SCREENING,
   POSTTEST,
   TECHNIQUE,
+  LOGIN,
+  DASHBOARD,
 } from "./name.types";
 
 export const routes = [
@@ -197,6 +202,49 @@ export const routes = [
             },
           },
         ],
+      },
+    ],
+  },
+  {
+    path: "/login",
+    name: LOGIN,
+    component: Login,
+    meta: {
+      title: LOGIN,
+      stack: 2,
+    },
+  },
+  {
+    path: "/dashboard",
+    component: {
+      render(c) {
+        return c("router-view");
+      },
+    },
+    meta: {
+      requiresAuth: true,
+      title: DASHBOARD.ROOT,
+    },
+    children: [
+      {
+        path: "",
+        name: DASHBOARD.ROOT,
+        component: Dashboard,
+        meta: {
+          requiresAuth: true,
+          title: DASHBOARD.ROOT,
+          stack: 3,
+        },
+      },
+      {
+        path: ":secureId",
+        name: DASHBOARD.DETAIL,
+        component: Detail,
+        meta: {
+          requiresAuth: true,
+          title: DASHBOARD.DETAIL,
+          stack: 4,
+        },
       },
     ],
   },

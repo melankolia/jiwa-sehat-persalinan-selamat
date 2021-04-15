@@ -36,3 +36,10 @@ export const TECHNIQUE = {
 };
 
 export const COMPLETED = "completed";
+
+export const LOGIN = "login";
+const dashboard = "dashboard";
+export const DASHBOARD = {
+  ROOT: `${dashboard}`,
+  DETAIL: `${dashboard}.detail`,
+}
