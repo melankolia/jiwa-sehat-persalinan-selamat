@@ -40,6 +40,8 @@ const Segmented = () => import("@/components/SegmentedProgressBar");
 const Logo = () => import("@/components/Logo");
 const First = () => import("@/views/Screening/Questions/first");
 const Second = () => import("@/views/Screening/Questions/second");
+
+import MainService from "@/services/resources/main.service";
 import { TECHNIQUE } from "@/router/name.types";
 
 export default {
@@ -51,6 +53,7 @@ export default {
   },
   data() {
     return {
+      id: this.$route.params?.secureId,
       transitionName: "",
       formLoading: false,
       backLoading: false,
@@ -79,17 +82,29 @@ export default {
     },
   },
   methods: {
+    insertData(id, payload) {
+      this.formLoading = true;
+      MainService.insertScreening(id, payload)
+        .then(({ data: { result, message } }) => {
+          if (message == "OK") {
+            this.$router.push({
+              name: TECHNIQUE.LIST,
+              params: { secureId: this.id },
+            });
+          } else {
+            throw new Error(result);
+          }
+        })
+        .catch((err) => console.error(err))
+        .finally(() => (this.formLoading = false));
+    },
     handleNext() {
       const pointer = this.currentIndex;
       if (pointer >= 0 && pointer < this.range.length) {
         this.range[pointer].active = true;
         this.transitionName = "slide-left";
       } else {
-        this.formLoading = true;
-        setTimeout(() => {
-          this.formLoading = false;
-          this.$router.push({ name: TECHNIQUE.LIST });
-        }, 2000);
+        this.insertData(this.id, this.answer);
       }
     },
     handlePrev() {
