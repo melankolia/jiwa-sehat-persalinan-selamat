@@ -73,6 +73,7 @@
 <script>
 const Snackbar = () => import("@/components/Snackbar");
 import { DASHBOARD } from "@/router/name.types";
+import DashboardService from "@/services/resources/dashboard.service";
 
 export default {
   components: {
@@ -89,8 +90,8 @@ export default {
         { text: "Usia Kandungan", value: "gestationalAge" },
         { text: "Pendidikan", value: "education" },
         { text: "Tingkat Pendapatan", value: "salaryRange" },
-        { text: "Pre-test", value: "pretestValue" },
-        { text: "Post-test", value: "postTestValue" },
+        { text: "Pre-test", value: "pretest" },
+        { text: "Post-test", value: "posttest" },
       ],
       dataResponden: [],
       loading: false,
@@ -141,34 +142,27 @@ export default {
     },
     async getList() {
       this.loading = true;
-      setTimeout(() => {
-        this.dataResponden = [
-          {
-            secureId: "123123-1231231-123123-123",
-            no: 1,
-            initialName: "AA",
-            age: 25,
-            gestationalAge: 12,
-            education: "S1",
-            salaryRange: ">= 3 Juta",
-            pretestValue: 30,
-            postTestValue: 30,
-          },
-          {
-            secureId: "123123-35345345-56767-787",
-            no: 2,
-            initialName: "AB",
-            age: 26,
-            gestationalAge: 16,
-            education: "SMA",
-            salaryRange: ">= 3 Juta",
-            pretestValue: 22,
-            postTestValue: 22,
-          },
-        ];
-        this.totalItem = this.dataResponden.length;
-        this.loading = false;
-      }, 2000);
+      const { page, itemsPerPage } = this.options;
+      DashboardService.getListResponden({
+        search: this.search,
+        page,
+        limit: itemsPerPage,
+      })
+        .then(({ data: { result, message } }) => {
+          if (message == "OK") {
+            result.data.map(
+              (e, i) => (e.no = itemsPerPage * (page - 1) + (i + 1))
+            );
+            this.dataResponden = [...result.data];
+            this.totalItem = result.elements;
+          } else {
+            throw new Error(result);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => (this.loading = false));
     },
   },
 };
