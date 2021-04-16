@@ -20,7 +20,7 @@
 <script>
 export default {
   props: {
-    answer: { type: Object, required: true, default: () => {}}
+    answer: { type: Object, required: true, default: () => {} },
   },
 };
 </script>

@@ -58,6 +58,7 @@ const Thirteen = () => import("@/views/Pretest/Questions/thirteen");
 const Fourteen = () => import("@/views/Pretest/Questions/fourteen");
 
 import { SCREENING } from "@/router/name.types";
+import MainService from "@/services/resources/main.service";
 
 export default {
   components: {
@@ -80,6 +81,7 @@ export default {
   },
   data() {
     return {
+      id: this.$route.params?.secureId,
       transitionName: "",
       formLoading: false,
       backLoading: false,
@@ -168,8 +170,21 @@ export default {
     },
   },
   methods: {
-    handleAnswer(param) {
-      console.log(param);
+    insertData(id, payload) {
+      this.formLoading = true;
+      MainService.insertPretest(id, payload)
+        .then(({ data: { result, message } }) => {
+          if (message == "OK") {
+            this.$router.push({
+              name: SCREENING.COVER,
+              params: { secureId: this.id },
+            });
+          } else {
+            throw new Error(result);
+          }
+        })
+        .catch((err) => console.error(err))
+        .finally(() => (this.formLoading = false));
     },
     handleNext() {
       const pointer = this.currentIndex;
@@ -177,11 +192,7 @@ export default {
         this.range[pointer].active = true;
         this.transitionName = "slide-left";
       } else {
-        this.formLoading = true;
-        setTimeout(() => {
-          this.formLoading = false;
-          this.$router.push({ name: SCREENING.COVER });
-        }, 2000);
+        this.insertData(this.id, this.answer);
       }
     },
     handlePrev() {

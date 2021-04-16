@@ -64,7 +64,7 @@ export const routes = [
         },
       },
       {
-        path: "/pre-test",
+        path: "/pre-test/:secureId",
         component: {
           render(c) {
             return c("router-view");
@@ -94,7 +94,7 @@ export const routes = [
         ],
       },
       {
-        path: "/screening",
+        path: "/screening/:secureId",
         component: {
           render(c) {
             return c("router-view");
@@ -124,7 +124,7 @@ export const routes = [
         ],
       },
       {
-        path: "/teknik",
+        path: "/teknik/:secureId",
         component: {
           render(c) {
             return c("router-view");
@@ -174,7 +174,7 @@ export const routes = [
         ],
       },
       {
-        path: "/post-test",
+        path: "/post-test/:secureId",
         component: {
           render(c) {
             return c("router-view");

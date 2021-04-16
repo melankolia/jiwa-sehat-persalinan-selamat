@@ -137,7 +137,10 @@ export default {
       Service.createResponden(payload)
         .then(({ data: { result, message } }) => {
           if (message == "OK") {
-            this.$router.push({ name: PRETEST.COVER });
+            this.$router.push({
+              name: PRETEST.COVER,
+              params: { secureId: result.secureId },
+            });
           } else {
             throw new Error(result);
           }
