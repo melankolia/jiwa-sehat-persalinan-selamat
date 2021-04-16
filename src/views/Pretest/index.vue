@@ -45,6 +45,17 @@ const First = () => import("@/views/Pretest/Questions/first");
 const Second = () => import("@/views/Pretest/Questions/second");
 const Third = () => import("@/views/Pretest/Questions/third");
 const Fourth = () => import("@/views/Pretest/Questions/fourth");
+const Fifth = () => import("@/views/Pretest/Questions/fifth");
+const Six = () => import("@/views/Pretest/Questions/six");
+const Seven = () => import("@/views/Pretest/Questions/seven");
+const Eight = () => import("@/views/Pretest/Questions/eight");
+const Nine = () => import("@/views/Pretest/Questions/nine");
+const Ten = () => import("@/views/Pretest/Questions/ten");
+const Eleven = () => import("@/views/Pretest/Questions/eleven");
+const Twelve = () => import("@/views/Pretest/Questions/twelve");
+const Thirteen = () => import("@/views/Pretest/Questions/thirteen");
+const Fourteen = () => import("@/views/Pretest/Questions/fourteen");
+
 import { SCREENING } from "@/router/name.types";
 
 export default {
@@ -54,6 +65,16 @@ export default {
     Second,
     Third,
     Fourth,
+    Fifth,
+    Six,
+    Seven,
+    Eight,
+    Nine,
+    Ten,
+    Eleven,
+    Twelve,
+    Thirteen,
+    Fourteen,
     Logo,
   },
   data() {
@@ -76,6 +97,46 @@ export default {
         },
         {
           screen: "Fourth",
+          active: false,
+        },
+        {
+          screen: "Fifth",
+          active: false,
+        },
+        {
+          screen: "Six",
+          active: false,
+        },
+        {
+          screen: "Seven",
+          active: false,
+        },
+        {
+          screen: "Eight",
+          active: false,
+        },
+        {
+          screen: "Nine",
+          active: false,
+        },
+        {
+          screen: "Ten",
+          active: false,
+        },
+        {
+          screen: "Eleven",
+          active: false,
+        },
+        {
+          screen: "Twelve",
+          active: false,
+        },
+        {
+          screen: "Thirteen",
+          active: false,
+        },
+        {
+          screen: "Fourteen",
           active: false,
         },
       ],

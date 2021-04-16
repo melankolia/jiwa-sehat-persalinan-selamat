@@ -1,11 +1,11 @@
 <template>
   <div class="pb-1 px-10">
     <div class="d-flex flex-column">
-      <p class="text-h5">Pertanyaan 1</p>
-      <p class="text-h6 font-weight-regular">Perasaan Cemas</p>
+      <p class="text-h5">Pertanyaan 14</p>
+      <p class="text-h6 font-weight-regular">Perilaku saat wawancara</p>
       <p class="text-body-1 font-weight-regular">
-        Kekhawatiran, mengantisipasi yang terburuk, antisipasi takut, cepat
-        marah.
+        Gelisah,mondar-mandir, jari-jari gemetar, mengkerutkan dahi atau kening,
+        muka tegang, napas pendek dan cepat, wajah pucat, sering menelan.
       </p>
       <div class="my-6 checkbox-container">
         <div

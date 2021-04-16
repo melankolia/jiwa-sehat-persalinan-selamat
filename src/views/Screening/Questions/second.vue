@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-6 px-10">
+  <div class="pb-1 px-10">
     <div class="d-flex flex-column">
       <p class="text-h5">Pertanyaan 2</p>
       <p class="text-body-1 font-weight-regular">

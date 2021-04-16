@@ -1,70 +1,49 @@
 <template>
-  <div class="pb-10 px-10">
+  <div class="pb-1 px-10">
     <div class="d-flex flex-column">
       <p class="text-h5">Pertanyaan 3</p>
+      <p class="text-h6 font-weight-regular">Ketakutan</p>
       <p class="text-body-1 font-weight-regular">
-        How often do you typically use our service ?
+        Gelap, orang asing, ditinggal sendirian, hewan, lalu lintas, keramaian.
       </p>
-      <div class="my-12 checkbox-container">
+      <div class="my-6 checkbox-container">
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
-          :class="{ selected: selected.daily }"
+          :class="{ selected: selected.one }"
         >
-          <v-checkbox v-model="selected.daily" hide-details color="secondary">
+          <v-checkbox v-model="selected.one" hide-details color="secondary">
             <template #label>
-              <span class="text-body-1 font-weight-medium"> Daily </span>
+              <span class="text-body-1 font-weight-medium"> 1 </span>
             </template>
           </v-checkbox>
         </div>
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
-          :class="{ selected: selected.onceAweek }"
+          :class="{ selected: selected.two }"
         >
-          <v-checkbox
-            v-model="selected.onceAweek"
-            hide-details
-            color="secondary"
-          >
+          <v-checkbox v-model="selected.two" hide-details color="secondary">
             <template #label>
-              <span class="text-body-1 font-weight-medium"> Once a Week </span>
+              <span class="text-body-1 font-weight-medium"> 2 </span>
             </template>
           </v-checkbox>
         </div>
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
-          :class="{ selected: selected.onceAmonth }"
+          :class="{ selected: selected.three }"
         >
-          <v-checkbox
-            v-model="selected.onceAmonth"
-            hide-details
-            color="secondary"
-          >
+          <v-checkbox v-model="selected.three" hide-details color="secondary">
             <template #label>
-              <span class="text-body-1 font-weight-medium"> Once a Month </span>
+              <span class="text-body-1 font-weight-medium"> 3 </span>
             </template>
           </v-checkbox>
         </div>
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
-          :class="{ selected: selected.every23 }"
+          :class="{ selected: selected.four }"
         >
-          <v-checkbox v-model="selected.every23" hide-details color="secondary">
+          <v-checkbox v-model="selected.four" hide-details color="secondary">
             <template #label>
-              <span class="text-body-1 font-weight-medium">
-                Every 2-3 Months
-              </span>
-            </template>
-          </v-checkbox>
-        </div>
-        <div
-          class="d-flex flex-column justify-center background-div px-4 py-5"
-          :class="{ selected: selected.less }"
-        >
-          <v-checkbox v-model="selected.less" hide-details color="secondary">
-            <template #label>
-              <span class="text-body-1 font-weight-medium">
-                Less than 5-a years
-              </span>
+              <span class="text-body-1 font-weight-medium"> 4 </span>
             </template>
           </v-checkbox>
         </div>
@@ -79,11 +58,10 @@ export default {
   data() {
     return {
       selected: {
-        daily: false,
-        onceAweek: false,
-        onceAmonth: false,
-        every23: false,
-        less: false,
+        one: false,
+        two: false,
+        three: false,
+        four: false,
       },
     };
   },

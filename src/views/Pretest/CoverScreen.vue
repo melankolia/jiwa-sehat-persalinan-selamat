@@ -1,9 +1,12 @@
 <template>
   <Cover
     title="Kuisioner Pre-test"
-    description="Dengan mengisi Kuesioner ini berarti Anda setuju menjadi responden
-          penelitian. Partisipasi Anda dalam mengisi kuesioner ini sangat
-          membantu saya untuk menyelesaikan penelitian"
+    description="Berikut terdapat beberapa frasa yang menggambarkan perasaan yang dialami seseorang. Silahkan menjawab dengan memberikan skor pada setiap frasa atau pernyataan yang menunjukkan perasaan selama seminggu terakhir."
+    note="0: Tidak,
+          1: Ringan,
+          2: Sedang,
+          3: Berat,
+          4: Sangat Parah"
     titleButton="Isi Kuisioner"
     :formLoading="formLoading"
     :handleNext="handleNext"

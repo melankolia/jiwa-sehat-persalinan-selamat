@@ -1,11 +1,11 @@
 <template>
   <div class="pb-1 px-10">
     <div class="d-flex flex-column">
-      <p class="text-h5">Pertanyaan 1</p>
-      <p class="text-h6 font-weight-regular">Perasaan Cemas</p>
+      <p class="text-h5">Pertanyaan 13</p>
+      <p class="text-h6 font-weight-regular">Gejala vegetatif</p>
       <p class="text-body-1 font-weight-regular">
-        Kekhawatiran, mengantisipasi yang terburuk, antisipasi takut, cepat
-        marah.
+        Mulut kering, mudah berkeringat, muka merah, pucat, pusing dan sakit
+        kepala, rambut rontok.
       </p>
       <div class="my-6 checkbox-container">
         <div

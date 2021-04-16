@@ -87,7 +87,7 @@ export default {
         this.formLoading = true;
         setTimeout(() => {
           this.formLoading = false;
-          this.$router.replace({ name: DASHBOARD });
+          this.$router.replace({ name: DASHBOARD.ROOT });
           // this.visible = true;
           // this.message = "Login Gagal";
           // this.color = "error";
