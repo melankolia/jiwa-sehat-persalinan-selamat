@@ -34,7 +34,7 @@
             calculate-widths
             color="secondary"
           >
-            <template #item.initialName="{ item }">
+            <template #[`item.initialName`]="{ item }">
               <router-link
                 :to="{
                   name: dashboardDetail,

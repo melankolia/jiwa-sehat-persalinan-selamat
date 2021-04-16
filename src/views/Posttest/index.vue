@@ -160,6 +160,22 @@ export default {
           active: false,
         },
       ],
+      answer: {
+        question1: null,
+        question2: null,
+        question3: null,
+        question4: null,
+        question5: null,
+        question6: null,
+        question7: null,
+        question8: null,
+        question9: null,
+        question10: null,
+        question11: null,
+        question12: null,
+        question13: null,
+        question14: null,
+      },
     };
   },
   computed: {

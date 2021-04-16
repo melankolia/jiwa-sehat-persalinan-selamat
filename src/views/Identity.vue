@@ -77,6 +77,8 @@
         rounded
         depressed
         color="pink accent-1"
+        :loading="loading"
+        dark
       >
         <span class="white--text button font-weight-medium"> Simpan </span>
       </v-btn>
@@ -86,6 +88,7 @@
 
 <script>
 import { AGREEMENT, PRETEST } from "@/router/name.types";
+import Service from "@/services/resources/main.service";
 
 export default {
   data() {
@@ -96,11 +99,11 @@ export default {
       salaryRangeList: [
         {
           name: "< 3 Juta",
-          value: "<3",
+          value: "< 3 Juta",
         },
         {
           name: ">= 3 Juta",
-          value: "3>=",
+          value: ">= 3 Juta",
         },
       ],
 
@@ -110,6 +113,7 @@ export default {
       gestationalAge: null,
       education: null,
       salaryRange: null,
+      loading: false,
     };
   },
   methods: {
@@ -125,9 +129,21 @@ export default {
           education: this.education,
           salaryRange: this.salaryRange,
         };
-        console.log(payload);
-        this.$router.push({ name: PRETEST.COVER });
+        this.createUser(payload);
       }
+    },
+    async createUser(payload) {
+      this.loading = true;
+      Service.createResponden(payload)
+        .then(({ data: { result, message } }) => {
+          if (message == "OK") {
+            this.$router.push({ name: PRETEST.COVER });
+          } else {
+            throw new Error(result);
+          }
+        })
+        .catch((err) => console.log(err))
+        .finally(() => (this.loading = false));
     },
   },
 };

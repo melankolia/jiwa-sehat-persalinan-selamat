@@ -10,9 +10,14 @@
       <div class="my-6 checkbox-container">
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
-          :class="{ selected: selected.one }"
+          :class="{ selected: answer.question1 == 1 }"
         >
-          <v-checkbox v-model="selected.one" hide-details color="secondary">
+          <v-checkbox
+            v-model="answer.question1"
+            :value="1"
+            hide-details
+            color="secondary"
+          >
             <template #label>
               <span class="text-body-1 font-weight-medium"> 1 </span>
             </template>
@@ -20,9 +25,14 @@
         </div>
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
-          :class="{ selected: selected.two }"
+          :class="{ selected: answer.question1 == 2 }"
         >
-          <v-checkbox v-model="selected.two" hide-details color="secondary">
+          <v-checkbox
+            v-model="answer.question1"
+            :value="2"
+            hide-details
+            color="secondary"
+          >
             <template #label>
               <span class="text-body-1 font-weight-medium"> 2 </span>
             </template>
@@ -30,9 +40,14 @@
         </div>
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
-          :class="{ selected: selected.three }"
+          :class="{ selected: answer.question1 == 3 }"
         >
-          <v-checkbox v-model="selected.three" hide-details color="secondary">
+          <v-checkbox
+            v-model="answer.question1"
+            :value="3"
+            hide-details
+            color="secondary"
+          >
             <template #label>
               <span class="text-body-1 font-weight-medium"> 3 </span>
             </template>
@@ -40,9 +55,14 @@
         </div>
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
-          :class="{ selected: selected.four }"
+          :class="{ selected: answer.question1 == 4 }"
         >
-          <v-checkbox v-model="selected.four" hide-details color="secondary">
+          <v-checkbox
+            v-model="answer.question1"
+            :value="4"
+            hide-details
+            color="secondary"
+          >
             <template #label>
               <span class="text-body-1 font-weight-medium"> 4 </span>
             </template>
@@ -56,23 +76,8 @@
 
 <script>
 export default {
-  data() {
-    return {
-      selected: {
-        one: false,
-        two: false,
-        three: false,
-        four: false,
-      },
-    };
-  },
-  watch: {
-    selected: {
-      handler(val) {
-        this.$emit("answer", val);
-      },
-      deep: true,
-    },
+  props: {
+    answer: { type: Object, required: true, default: () => {} },
   },
 };
 </script>
