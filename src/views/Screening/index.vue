@@ -5,10 +5,7 @@
       <Logo :isBorder="true" :top="8" :right="5" />
       <keep-alive>
         <transition :name="transitionName">
-          <component
-            @answer="handleAnswer($event)"
-            :is="range[currentIndex - 1].screen"
-          />
+          <component :is="range[currentIndex - 1].screen" :answer="answer" />
         </transition>
       </keep-alive>
     </div>
@@ -67,6 +64,10 @@ export default {
           active: false,
         },
       ],
+      answer: {
+        question1: null,
+        question2: null,
+      },
     };
   },
   computed: {
@@ -78,9 +79,6 @@ export default {
     },
   },
   methods: {
-    handleAnswer(param) {
-      console.log({ param });
-    },
     handleNext() {
       const pointer = this.currentIndex;
       if (pointer >= 0 && pointer < this.range.length) {

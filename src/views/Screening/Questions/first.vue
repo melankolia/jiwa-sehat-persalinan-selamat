@@ -7,7 +7,7 @@
       </p>
     </div>
     <v-textarea
-      v-model="question1"
+      v-model="answer.question1"
       auto-grow
       color="secondary"
       label="Jawaban"
@@ -19,18 +19,8 @@
 
 <script>
 export default {
-  data() {
-    return {
-      question1: "",
-    };
-  },
-  watch: {
-    question1: {
-      handler(val) {
-        this.debounce(() => this.$emit("answer", val));
-      },
-      deep: true,
-    },
+  props: {
+    answer: { type: Object, required: true, default: () => {}}
   },
 };
 </script>

@@ -8,6 +8,7 @@
           <component
             @answer="handleAnswer($event)"
             :is="range[currentIndex - 1].screen"
+            :answer="answer"
           />
         </transition>
       </keep-alive>
