@@ -74,6 +74,8 @@ const Twelve = () => import("@/views/Pretest/Questions/twelve");
 const Thirteen = () => import("@/views/Pretest/Questions/thirteen");
 const Fourteen = () => import("@/views/Pretest/Questions/fourteen");
 const DialogCompleted = () => import("@/components/Dialog/Completed");
+
+import MainService from "@/services/resources/main.service";
 // import { HOME } from "@/router/name.types";
 
 export default {
@@ -99,6 +101,7 @@ export default {
   data() {
     return {
       // Dialog properties
+      id: this.$route.params?.secureId,
       visible: false,
       transitionName: "",
       formLoading: false,
@@ -192,8 +195,18 @@ export default {
     },
   },
   methods: {
-    handleAnswer(param) {
-      console.log({ param });
+    insertData(id, payload) {
+      this.formLoading = true;
+      MainService.insertPosttest(id, payload)
+        .then(({ data: { result, message } }) => {
+          if (message == "OK") {
+            this.visible = true;
+          } else {
+            throw new Error(result);
+          }
+        })
+        .catch((err) => console.error(err))
+        .finally(() => this.forLoading);
     },
     handleDialogClose() {
       this.$router.replace("/");
@@ -206,11 +219,7 @@ export default {
         this.range[pointer].active = true;
         this.transitionName = "slide-left";
       } else {
-        this.formLoading = true;
-        setTimeout(() => {
-          this.formLoading = false;
-          this.visible = true;
-        }, 2000);
+        this.insertData(this.id, this.answer);
       }
     },
     handlePrev() {

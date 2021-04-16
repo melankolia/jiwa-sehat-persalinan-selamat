@@ -1,5 +1,5 @@
 import MainInstance from "../main.instance";
-import { RESPONDEN, PRETEST, SCREENING } from "../constants";
+import { RESPONDEN, PRETEST, SCREENING, POSTTEST } from "../constants";
 
 const MainService = {
   createResponden(data) {
@@ -10,6 +10,9 @@ const MainService = {
   },
   insertScreening(id, data) {
     return MainInstance.create(SCREENING, id, data);
+  },
+  insertPosttest(id, data) {
+    return MainInstance.create(POSTTEST, id, data);
   },
 };
 
