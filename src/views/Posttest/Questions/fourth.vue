@@ -7,7 +7,7 @@
         Kesulitan untuk tertidur, terbangun pada malam hari, tidur tidak
         memuaskan dan kelelahan saat bangun tidur, mimpi buruk, teror malam.
       </p>
-      <div class="my-6 checkbox-container">
+      <div class="my-4 checkbox-container">
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
           :class="{ selected: answer.question4 == 0 }"

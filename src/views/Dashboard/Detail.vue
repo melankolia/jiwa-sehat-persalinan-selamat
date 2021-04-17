@@ -34,13 +34,13 @@
                   <td style="width: 30%">
                     <span class="font-weight-medium"> Umur </span>
                   </td>
-                  <td>{{ item.age }}</td>
+                  <td>{{ item.age }} Tahun</td>
                 </tr>
                 <tr>
                   <td style="width: 30%">
                     <span class="font-weight-medium"> Usia Kandungan </span>
                   </td>
-                  <td>{{ item.gestationalAge }}</td>
+                  <td>{{ item.gestationalAge }} Minggu</td>
                 </tr>
                 <tr>
                   <td style="width: 30%">
@@ -73,6 +73,12 @@
                   :lists="item.pretestList"
                   isDataTable
                 />
+                <tr>
+                  <td style="width: 30%">
+                    <span class="font-weight-medium"> Total Pre-test </span>
+                  </td>
+                  <td>{{ item.pretest }}</td>
+                </tr>
                 <SubList
                   title="Screening"
                   :show="show2"
@@ -113,6 +119,12 @@
                   :lists="item.postTestList"
                   isDataTable
                 />
+                <tr>
+                  <td style="width: 30%">
+                    <span class="font-weight-medium"> Total Post-test </span>
+                  </td>
+                  <td>{{ item.posttest }}</td>
+                </tr>
               </tbody>
             </template>
           </v-simple-table>
@@ -155,6 +167,8 @@ export default {
         gestationalAge: null,
         education: null,
         salaryRange: null,
+        pretest: null,
+        posttest: null,
         pretestList: [],
         screeningList: [],
         postTestList: [],

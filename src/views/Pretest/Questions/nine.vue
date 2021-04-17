@@ -9,10 +9,10 @@
       <div class="my-6 checkbox-container">
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
-          :class="{ selected: answer.question8 == 0 }"
+          :class="{ selected: answer.question9 == 0 }"
         >
           <v-checkbox
-            v-model="answer.question8"
+            v-model="answer.question9"
             :value="'0'"
             hide-details
             color="secondary"
