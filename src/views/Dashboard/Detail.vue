@@ -132,6 +132,7 @@
 const SubList = () => import("@/components/Table/SubList");
 const SubTable = () => import("@/components/Table/SubTable");
 const ContentNotFound = () => import("@/components/Content/NotFound");
+import DashboardService from "@/services/resources/dashboard.service";
 
 export default {
   components: {
@@ -147,7 +148,6 @@ export default {
       show3: false,
 
       // Data List
-      isAvailable: true,
       loading: false,
       item: {
         initialName: null,
@@ -169,8 +169,13 @@ export default {
       ],
 
       screeningHeaders: [
-        { text: "No", value: "no", sortable: false },
-        { text: "Pertanyaan", value: "question", sortable: false },
+        { text: "No", value: "no", sortable: false, width: "4%" },
+        {
+          text: "Pertanyaan",
+          value: "question",
+          sortable: false,
+          width: "40%",
+        },
         { text: "Jawaban", value: "answer", sortable: false },
       ],
     };
@@ -231,9 +236,45 @@ export default {
         };
       }, 2000);
     },
+    translateNote(e) {
+      if (!e) return "-";
+      else if (e == 0) return "Tidak";
+      else if (e == 1) return "Ringan";
+      else if (e == 2) return "Sedang";
+      else if (e == 3) return "Berat";
+      else if (e == 4) return "Sangat Parah";
+    },
+    async getDetail(id) {
+      this.loading = true;
+      DashboardService.getDetail(id)
+        .then(({ data: { result, message } }) => {
+          if (message == "OK") {
+            result.pretestList.map((e, i) => {
+              e.no = i + 1;
+              e.note = this.translateNote(e.answer);
+            });
+            result.postTestList.map((e, i) => {
+              e.no = i + 1;
+              e.note = this.translateNote(e.answer);
+            });
+            result.screeningList.map((e, i) => (e.no = i + 1));
+            this.item = { ...this.item, ...result };
+          } else {
+            throw new Error(result);
+          }
+        })
+        .catch((err) => console.error(err))
+        .finally(() => (this.loading = false));
+    },
   },
   mounted() {
-    this.id && this.getList();
+    console.log(this.id);
+    this.id && this.getDetail(this.id);
+  },
+  computed: {
+    isAvailable() {
+      return this.item.initialName;
+    },
   },
 };
 </script>

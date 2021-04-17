@@ -13,6 +13,9 @@
             lastIcon: 'last_page',
           }"
         >
+          <template v-slot:[`item.answer`]="{ item }">
+            {{ item.answer || "-" }}
+          </template>
         </v-data-table>
       </v-card>
     </td>
