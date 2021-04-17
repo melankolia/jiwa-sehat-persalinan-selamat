@@ -10,6 +10,21 @@
       <div class="my-6 checkbox-container">
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
+          :class="{ selected: answer.question8 == 0 }"
+        >
+          <v-checkbox
+            v-model="answer.question8"
+            :value="0"
+            hide-details
+            color="secondary"
+          >
+            <template #label>
+              <span class="text-body-1 font-weight-medium"> 0 </span>
+            </template>
+          </v-checkbox>
+        </div>
+        <div
+          class="d-flex flex-column justify-center background-div px-4 py-5"
           :class="{ selected: answer.question2 == 1 }"
         >
           <v-checkbox
