@@ -59,20 +59,20 @@
 <script>
 const Segmented = () => import("@/components/SegmentedProgressBar");
 const Logo = () => import("@/components/Logo");
-const First = () => import("@/views/Pretest/Questions/first");
-const Second = () => import("@/views/Pretest/Questions/second");
-const Third = () => import("@/views/Pretest/Questions/third");
-const Fourth = () => import("@/views/Pretest/Questions/fourth");
-const Fifth = () => import("@/views/Pretest/Questions/fifth");
-const Six = () => import("@/views/Pretest/Questions/six");
-const Seven = () => import("@/views/Pretest/Questions/seven");
-const Eight = () => import("@/views/Pretest/Questions/eight");
-const Nine = () => import("@/views/Pretest/Questions/nine");
-const Ten = () => import("@/views/Pretest/Questions/ten");
-const Eleven = () => import("@/views/Pretest/Questions/eleven");
-const Twelve = () => import("@/views/Pretest/Questions/twelve");
-const Thirteen = () => import("@/views/Pretest/Questions/thirteen");
-const Fourteen = () => import("@/views/Pretest/Questions/fourteen");
+const First = () => import("@/views/Posttest/Questions/first");
+const Second = () => import("@/views/Posttest/Questions/second");
+const Third = () => import("@/views/Posttest/Questions/third");
+const Fourth = () => import("@/views/Posttest/Questions/fourth");
+const Fifth = () => import("@/views/Posttest/Questions/fifth");
+const Six = () => import("@/views/Posttest/Questions/six");
+const Seven = () => import("@/views/Posttest/Questions/seven");
+const Eight = () => import("@/views/Posttest/Questions/eight");
+const Nine = () => import("@/views/Posttest/Questions/nine");
+const Ten = () => import("@/views/Posttest/Questions/ten");
+const Eleven = () => import("@/views/Posttest/Questions/eleven");
+const Twelve = () => import("@/views/Posttest/Questions/twelve");
+const Thirteen = () => import("@/views/Posttest/Questions/thirteen");
+const Fourteen = () => import("@/views/Posttest/Questions/fourteen");
 const DialogCompleted = () => import("@/components/Dialog/Completed");
 
 import MainService from "@/services/resources/main.service";

@@ -14,7 +14,7 @@
         >
           <v-checkbox
             v-model="answer.question8"
-            :value="0"
+            :value="'0'"
             hide-details
             color="secondary"
           >

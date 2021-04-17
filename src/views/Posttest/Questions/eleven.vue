@@ -10,11 +10,11 @@
       <div class="my-6 checkbox-container">
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
-          :class="{ selected: answer.question8 == 0 }"
+          :class="{ selected: answer.question11 == 0 }"
         >
           <v-checkbox
-            v-model="answer.question8"
-            :value="0"
+            v-model="answer.question11"
+            :value="'0'"
             hide-details
             color="secondary"
           >
@@ -85,7 +85,7 @@
         </div>
       </div>
     </div>
-    <div></div>
+    
   </div>
 </template>
 
