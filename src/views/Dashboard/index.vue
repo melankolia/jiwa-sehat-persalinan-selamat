@@ -142,11 +142,13 @@ export default {
     },
     async getList() {
       this.loading = true;
-      const { page, itemsPerPage } = this.options;
+      const { page, itemsPerPage, sortBy, sortDesc } = this.options;
       DashboardService.getListResponden({
         search: this.search,
         page,
         limit: itemsPerPage,
+        sortBy: sortBy[0] && sortBy[0],
+        sortDesc: sortDesc[0] ? "DESC" : "ASC",
       })
         .then(({ data: { result, message } }) => {
           if (message == "OK") {
