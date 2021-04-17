@@ -9,8 +9,8 @@ const MainInstance = {
     return instance.get(resource, params);
   },
 
-  async download(resource, params, type) {
-    return instance.get(resource, { params, responseType: type });
+  async download(resource, data, params, type) {
+    return instance.post(resource, data, { params, responseType: type });
   },
 
   async fetch(resource, slug = "", params) {

@@ -1,5 +1,5 @@
 import MainInstance from "../main.instance";
-import { RESPONDEN, LOGIN } from "../constants";
+import { RESPONDEN, LOGIN, EXPORT } from "../constants";
 
 const MainService = {
   getListResponden(params) {
@@ -13,7 +13,10 @@ const MainService = {
   },
   login(payload) {
     return MainInstance.post(LOGIN, payload);
-  }
+  },
+  downloadFile() {
+    return MainInstance.download(EXPORT, null, null, "arraybuffer");
+  },
 };
 
 export default MainService;

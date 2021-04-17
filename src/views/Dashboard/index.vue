@@ -162,14 +162,19 @@ export default {
     },
   },
   methods: {
-    handleDownload() {
+    async handleDownload() {
       this.downloadLoading = true;
-      setTimeout(() => {
-        this.visible = true;
-        this.message = "Berhasil Download File Excel";
-        this.downloadLoading = false;
-        this.color = "success";
-      }, 3000);
+      DashboardService.downloadFile()
+        .then((response) => {
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", `Users.xlsx`);
+          document.body.appendChild(link);
+          link.click();
+        })
+        .catch((err) => console.log(err))
+        .finally(() => (this.downloadLoading = false));
     },
     async getList() {
       this.loading = true;
