@@ -37,7 +37,7 @@
             dark
             color="secondary"
             block
-            :loading="formLoading"
+            :loading="loading"
           >
             <span class="font-weight-bold">Submit</span>
           </v-btn>
@@ -55,6 +55,8 @@
 
 <script>
 import { DASHBOARD } from "@/router/name.types";
+import { mapActions, mapGetters } from "vuex";
+import { LOGIN } from "@/store/constants/actions.type";
 const Snackbar = () => import("@/components/Snackbar");
 
 export default {
@@ -77,22 +79,41 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["loading"]),
     resizeWidth() {
       return this.$vuetify.breakpoint.xs && { flat: true };
     },
   },
   methods: {
+    ...mapActions([LOGIN]),
     onSubmit() {
       if (this.$refs.form.validate()) {
-        this.formLoading = true;
-        setTimeout(() => {
-          this.formLoading = false;
-          this.$router.replace({ name: DASHBOARD.ROOT });
-          // this.visible = true;
-          // this.message = "Login Gagal";
-          // this.color = "error";
-        }, 500);
+        // this.formLoading = true;
+        // setTimeout(() => {
+        //   this.formLoading = false;
+        //   this.$router.replace({ name: DASHBOARD.ROOT });
+        // this.visible = true;
+        // this.message = "Login Gagal";
+        // this.color = "error";
+        // }, 500);
+        const payload = {
+          username: this.username,
+          password: this.password,
+        };
+        this.handleLogin(payload);
       }
+    },
+    handleLogin(payload) {
+      this[LOGIN](payload)
+        .then(() => {
+          this.$router.replace({ name: DASHBOARD.ROOT });
+        })
+        .catch((err) => {
+          console.error(err);
+          this.visible = true;
+          this.message = err.toString();
+          this.color = "error";
+        });
     },
   },
 };

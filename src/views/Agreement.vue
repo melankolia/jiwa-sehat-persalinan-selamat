@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column pa-10" style="height: 78vh">
     <p class="subtitle-1 font-weight-medium">Persetujuan Menjadi Responden</p>
-    <div class="pb-4" style="overflow: scroll">
+    <div class="pb-4">
       <p
         class="text-body-2 text-justify font-font-weight-thin blue-grey--text darken-2"
         style="line-height: 1.8rem !important"

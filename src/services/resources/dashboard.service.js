@@ -1,5 +1,5 @@
 import MainInstance from "../main.instance";
-import { RESPONDEN } from "../constants";
+import { RESPONDEN, LOGIN } from "../constants";
 
 const MainService = {
   getListResponden(params) {
@@ -11,6 +11,9 @@ const MainService = {
   deleteResponden(id) {
     return MainInstance.deleteSlug(RESPONDEN, id);
   },
+  login(payload) {
+    return MainInstance.post(LOGIN, payload);
+  }
 };
 
 export default MainService;

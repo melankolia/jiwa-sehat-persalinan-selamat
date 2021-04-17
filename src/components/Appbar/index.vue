@@ -25,7 +25,7 @@
       <v-card>
         <v-divider></v-divider>
         <v-list>
-          <v-list-item @click="logOut">
+          <v-list-item @click="handleLogout">
             <v-list-item-title>Logout</v-list-item-title>
             <v-list-item-icon>
               <v-icon small right>exit_to_app</v-icon>
@@ -38,10 +38,17 @@
 </template>
 
 <script>
+import { LOGOUT } from "@/store/constants/actions.type";
+import { HOME } from "@/router/name.types";
+import { mapActions } from "vuex";
+
 export default {
   methods: {
-    logOut() {
-      console.log("logOut()");
+    ...mapActions([LOGOUT]),
+    handleLogout() {
+      this[LOGOUT]().then(() => {
+        this.$router.replace({ name: HOME });
+      });
     },
   },
 };

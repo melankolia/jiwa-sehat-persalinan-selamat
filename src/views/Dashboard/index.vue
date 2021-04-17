@@ -7,14 +7,14 @@
         </p>
         <v-divider class="my-6 divider-color" />
         <v-card>
-          <v-card-title>
+          <v-card-title class="secondary white--text mb-2">
             <v-text-field
               v-model="search"
               append-icon="search"
               label="Search"
-              single-line
               hide-details
               clearable
+              dark
             ></v-text-field>
           </v-card-title>
           <v-data-table
