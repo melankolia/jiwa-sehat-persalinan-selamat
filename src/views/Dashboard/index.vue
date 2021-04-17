@@ -46,6 +46,23 @@
                 </span>
               </router-link>
             </template>
+            <template #[`item.actions`]="{ item }">
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on }">
+                  <v-btn
+                    text
+                    icon
+                    color="error"
+                    class="px-3"
+                    v-on="on"
+                    @click="deleteItem(item)"
+                  >
+                    <v-icon small> delete </v-icon>
+                  </v-btn>
+                </template>
+                <span>Delete</span>
+              </v-tooltip>
+            </template>
           </v-data-table>
         </v-card>
         <div class="d-flex flex-row my-4 justify-end">
@@ -67,21 +84,34 @@
       :color="color"
       @handleClose="visible = $event"
     />
+    <ConfirmationDelete
+      :dialog="visibleConfirmation"
+      :onSubmit="onSubmit"
+      :onCancel="onCancel"
+      :loading="confirmationLoading"
+    />
   </div>
 </template>
 
 <script>
 const Snackbar = () => import("@/components/Snackbar");
+const ConfirmationDelete = () => import("@/components/Dialog/Confirmation");
 import { DASHBOARD } from "@/router/name.types";
 import DashboardService from "@/services/resources/dashboard.service";
 
 export default {
   components: {
     Snackbar,
+    ConfirmationDelete,
   },
   data() {
     return {
       dashboardDetail: DASHBOARD.DETAIL,
+      // COnfirmation Delete Properties
+      visibleConfirmation: false,
+      confirmationLoading: false,
+      selectedItem: null,
+
       // Data Table Properties
       headers: [
         { text: "No", value: "no", sortable: false },
@@ -92,6 +122,7 @@ export default {
         { text: "Tingkat Pendapatan", value: "salaryRange" },
         { text: "Pre-test", value: "pretest" },
         { text: "Post-test", value: "posttest" },
+        { text: "Actions", align: "center", value: "actions", sortable: false },
       ],
       dataResponden: [],
       loading: false,
@@ -165,6 +196,37 @@ export default {
           console.log(err);
         })
         .finally(() => (this.loading = false));
+    },
+    deleteItem(item) {
+      this.visibleConfirmation = true;
+      this.selectedItem = { ...item };
+    },
+    async onSubmit() {
+      this.confirmationLoading = true;
+      DashboardService.deleteResponden(this.selectedItem?.secureId)
+        .then(({ data: { result, message } }) => {
+          if (message == "OK") {
+            this.message = "Data berhasil dihapus";
+            this.color = "success";
+            this.getList();
+          } else {
+            throw new Error(result);
+          }
+        })
+        .catch((err) => {
+          this.message = "Data gagal dihapus";
+          this.color = "error";
+          console.error(err);
+        })
+        .finally(() => {
+          this.confirmationLoading = false;
+          this.visibleConfirmation = false;
+          this.visible = true;
+        });
+    },
+    onCancel() {
+      this.selectedItem = null;
+      this.visibleConfirmation = false;
     },
   },
 };

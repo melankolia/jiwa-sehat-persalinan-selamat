@@ -129,14 +129,34 @@
             </template>
           </v-simple-table>
         </v-card>
-        <div class="d-flex flex-row mt-10">
-          <v-btn @click="$router.back()" class="py-5 px-12" color="default">
+        <div class="d-flex flex-row mt-6">
+          <v-btn
+            @click="$router.back()"
+            class="py-5 px-12 mr-4"
+            color="default"
+          >
             <v-icon left>keyboard_arrow_left</v-icon>
             <span class="font-weight-medium">Back</span>
+          </v-btn>
+          <v-btn @click="visible = true" class="py-5 px-8" color="error">
+            <span class="font-weight-medium">Delete</span>
+            <v-icon right>close</v-icon>
           </v-btn>
         </div>
       </template>
     </div>
+    <Snackbar
+      :show="snackbarVisible"
+      :message="message"
+      :color="color"
+      @handleClose="visible = $event"
+    />
+    <ConfirmationDelete
+      :dialog="visible"
+      :onSubmit="onSubmit"
+      :onCancel="onCancel"
+      :loading="confirmationLoading"
+    />
   </v-content>
 </template>
 
@@ -144,17 +164,24 @@
 const SubList = () => import("@/components/Table/SubList");
 const SubTable = () => import("@/components/Table/SubTable");
 const ContentNotFound = () => import("@/components/Content/NotFound");
+const Snackbar = () => import("@/components/Snackbar");
+const ConfirmationDelete = () => import("@/components/Dialog/Confirmation");
 import DashboardService from "@/services/resources/dashboard.service";
+import { DASHBOARD } from "@/router/name.types";
 
 export default {
   components: {
     SubList,
     SubTable,
     ContentNotFound,
+    ConfirmationDelete,
+    Snackbar,
   },
   data() {
     return {
       id: this.$route.params?.secureId,
+      visible: false,
+      confirmationLoading: false,
       show: false,
       show2: false,
       show3: false,
@@ -192,64 +219,14 @@ export default {
         },
         { text: "Jawaban", value: "answer", sortable: false },
       ],
+
+      // Snackbar properties
+      snackbarVisible: false,
+      message: null,
+      color: null,
     };
   },
   methods: {
-    async getList() {
-      this.isAvailable = false;
-      this.loading = true;
-      setTimeout(() => {
-        this.isAvailable = true;
-        this.loading = false;
-        this.item = {
-          initialName: "AA",
-          age: 21,
-          gestationalAge: 12,
-          education: "S1",
-          salaryRange: ">= 3 Juta",
-          pretestList: [
-            {
-              no: 1,
-              question: "Question 1",
-              answer: 1,
-              note: "Ringan",
-            },
-            {
-              no: 2,
-              question: "Question 2",
-              answer: 2,
-              note: "Sedang",
-            },
-          ],
-          screeningList: [
-            {
-              no: 1,
-              question: "Question 1",
-              answer: "Saya baik baik saja",
-            },
-            {
-              no: 2,
-              question: "Question 2",
-              answer: "Saya baik baik saja",
-            },
-          ],
-          postTestList: [
-            {
-              no: 1,
-              question: "Question 1",
-              answer: 1,
-              note: "Ringan",
-            },
-            {
-              no: 2,
-              question: "Question 2",
-              answer: 2,
-              note: "Sedang",
-            },
-          ],
-        };
-      }, 2000);
-    },
     translateNote(e) {
       if (!e) return "-";
       else if (e == 0) return "Tidak";
@@ -280,9 +257,34 @@ export default {
         .catch((err) => console.error(err))
         .finally(() => (this.loading = false));
     },
+    async onSubmit() {
+      this.confirmationLoading = true;
+      DashboardService.deleteResponden(this.id)
+        .then(({ data: { result, message } }) => {
+          if (message == "OK") {
+            this.message = "Data berhasil dihapus";
+            this.color = "success";
+            this.$router.replace({ name: DASHBOARD.ROOT });
+          } else {
+            throw new Error(result);
+          }
+        })
+        .catch((err) => {
+          this.message = "Data gagal dihapus";
+          this.color = "error";
+          console.error(err);
+        })
+        .finally(() => {
+          this.confirmationLoading = false;
+          this.visible = false;
+          this.snackbarVisible = true;
+        });
+    },
+    onCancel() {
+      this.visible = false;
+    },
   },
   mounted() {
-    console.log(this.id);
     this.id && this.getDetail(this.id);
   },
   computed: {

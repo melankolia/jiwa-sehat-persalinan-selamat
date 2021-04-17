@@ -8,6 +8,9 @@ const MainService = {
   getDetail(id) {
     return MainInstance.fetch(RESPONDEN, id);
   },
+  deleteResponden(id) {
+    return MainInstance.deleteSlug(RESPONDEN, id);
+  },
 };
 
 export default MainService;
