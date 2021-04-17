@@ -7,7 +7,7 @@
         Hilangnya minat, berkurangnya kesenangan pada hobi, sedih, perasaan
         tidak menyenangkan sepanjang hari, bangun awal.
       </p>
-      <div class="my-6 checkbox-container">
+      <div class="my-2 checkbox-container">
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
           :class="{ selected: answer.question8 == 0 }"
@@ -85,7 +85,6 @@
         </div>
       </div>
     </div>
-    <div></div>
   </div>
 </template>
 

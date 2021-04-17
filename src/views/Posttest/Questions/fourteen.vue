@@ -7,7 +7,7 @@
         Gelisah,mondar-mandir, jari-jari gemetar, mengkerutkan dahi atau kening,
         muka tegang, napas pendek dan cepat, wajah pucat, sering menelan.
       </p>
-      <div class="my-6 checkbox-container">
+      <div class="my-4 checkbox-container">
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
           :class="{ selected: answer.question14 == 0 }"
@@ -85,7 +85,6 @@
         </div>
       </div>
     </div>
-    
   </div>
 </template>
 

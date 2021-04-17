@@ -7,7 +7,7 @@
         Mulut kering, mudah berkeringat, muka merah, pucat, pusing dan sakit
         kepala, rambut rontok.
       </p>
-      <div class="my-6 checkbox-container">
+      <div class="my-4 checkbox-container">
         <div
           class="d-flex flex-column justify-center background-div px-4 py-5"
           :class="{ selected: answer.question13 == 0 }"
@@ -85,7 +85,6 @@
         </div>
       </div>
     </div>
-    
   </div>
 </template>
 
