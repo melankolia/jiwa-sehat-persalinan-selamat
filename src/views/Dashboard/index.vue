@@ -169,7 +169,7 @@ export default {
           const url = window.URL.createObjectURL(new Blob([response.data]));
           const link = document.createElement("a");
           link.href = url;
-          link.setAttribute("download", `Users.xlsx`);
+          link.setAttribute("download", `Data_Responden.xlsx`);
           document.body.appendChild(link);
           link.click();
         })

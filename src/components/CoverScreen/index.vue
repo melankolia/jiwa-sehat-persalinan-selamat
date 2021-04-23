@@ -12,10 +12,34 @@
           {{ title }}
         </p>
         <p class="text-body-2 text-justify" v-html="description"></p>
-        <p v-if="note" class="text-body-2 text-justify mb-4 font-weight-medium">
-          Keterangan: <br />
-          {{ note }}
-        </p>
+        <v-expand-transition>
+          <v-card-actions
+            class="rounded my-6"
+            style="background-color: #d6efff"
+            v-if="isScrolled"
+          >
+            <v-row>
+              <v-col cols="12" class="py-4">
+                <v-icon small class="float-left px-2">info</v-icon>
+                <p class="caption ma-0 ml-3 font-weight-bold">Keterangan :</p>
+                <ul class="caption ml-3 mb-2">
+                  <li>
+                    {{ note }}
+                  </li>
+                </ul>
+                <v-icon small class="float-left px-2">info</v-icon>
+                <p class="caption ma-0 ml-3 font-weight-bold">Note :</p>
+                <ul class="caption ml-3">
+                  <li>
+                    Apabila terdapat kesulitan dalam pengisian kuisioner di
+                    atas. Anda dapat menghubungi nomor
+                    <b>0831-6076-9090</b> (Teta Apriliana)
+                  </li>
+                </ul>
+              </v-col>
+            </v-row>
+          </v-card-actions>
+        </v-expand-transition>
       </div>
       <v-btn
         @click="handleNext"
@@ -46,6 +70,32 @@ export default {
   },
   components: {
     Logo,
+  },
+  data() {
+    return {
+      isScrolled: false,
+    };
+  },
+  methods: {
+    scroll(bottomOfWindow) {
+      window.onscroll = () => {
+        if (bottomOfWindow) {
+          this.isScrolled = true;
+        }
+      };
+    },
+  },
+  computed: {
+    calculateHeight() {
+      let bottomOfWindow =
+        Math.round(document.documentElement.scrollTop + window.innerHeight) >=
+        document.documentElement.offsetHeight;
+      return bottomOfWindow;
+    },
+  },
+  mounted() {
+    this.scroll();
+    this.calculateHeight && (this.isScrolled = true);
   },
 };
 </script>
