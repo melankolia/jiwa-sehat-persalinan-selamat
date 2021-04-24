@@ -20,13 +20,15 @@
           >
             <v-row>
               <v-col cols="12" class="py-4">
-                <v-icon small class="float-left px-2">info</v-icon>
-                <p class="caption ma-0 ml-3 font-weight-bold">Keterangan :</p>
-                <ul class="caption ml-3 mb-2">
-                  <li>
-                    {{ note }}
-                  </li>
-                </ul>
+                <template v-if="note">
+                  <v-icon small class="float-left px-2">info</v-icon>
+                  <p class="caption ma-0 ml-3 font-weight-bold">Keterangan :</p>
+                  <ul class="caption ml-3 mb-2">
+                    <li>
+                      {{ note }}
+                    </li>
+                  </ul>
+                </template>
                 <v-icon small class="float-left px-2">info</v-icon>
                 <p class="caption ma-0 ml-3 font-weight-bold">Note :</p>
                 <ul class="caption ml-3">
