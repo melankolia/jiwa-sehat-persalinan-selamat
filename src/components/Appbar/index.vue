@@ -1,16 +1,16 @@
 <template>
   <v-app-bar app absolute color="secondary" dark dense>
-    <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
     <div
-      class="d-flex flew-row justify-center align-center pink accent-1 pa-2 bordering"
+      class="d-flex flew-row justify-center align-center pink accent-1 pa-2 bordering custom-pointer"
       style="width: 64px; height: 64px; border-color: white !important"
+      @click="handleBack"
     >
       <img src="@/assets/flowers.png" alt="unsri" />
       <img src="@/assets/logo-sementara.png" alt="unsri" />
       <img src="@/assets/flowers.png" alt="unsri" />
     </div>
 
-    <v-toolbar-title class="ml-4">
+    <v-toolbar-title class="ml-4 custom-pointer" @click="handleBack">
       <span class="font-weight-medium">Dashboard</span>
     </v-toolbar-title>
 
@@ -39,12 +39,15 @@
 
 <script>
 import { LOGOUT } from "@/store/constants/actions.type";
-import { HOME } from "@/router/name.types";
+import { HOME, DASHBOARD } from "@/router/name.types";
 import { mapActions } from "vuex";
 
 export default {
   methods: {
     ...mapActions([LOGOUT]),
+    handleBack() {
+      this.$router.replace({ name: DASHBOARD.ROOT });
+    },
     handleLogout() {
       this[LOGOUT]().then(() => {
         this.$router.replace({ name: HOME });
@@ -72,5 +75,9 @@ img:last-child {
 }
 .bordering {
   border: 2px solid white !important;
+}
+
+.custom-pointer:hover {
+  cursor: pointer;
 }
 </style>

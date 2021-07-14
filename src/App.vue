@@ -77,4 +77,8 @@ v-app {
   opacity: 0;
   transform: translate(-100%, 0);
 }
+
+.v-select__selections {
+  font-size: 12px;
+}
 </style>

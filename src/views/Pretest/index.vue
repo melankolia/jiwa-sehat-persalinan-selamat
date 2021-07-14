@@ -1,182 +1,158 @@
 <template>
-  <div class="d-flex flex-column" style="height: 100vh">
-    <div class="flex-grow-1">
-      <Segmented :range="range" />
-      <Logo :isBorder="true" :top="8" :right="5" />
-      <keep-alive>
-        <transition :name="transitionName">
-          <component
-            @answer="handleAnswer($event)"
-            :is="range[currentIndex - 1].screen"
-            :answer="answer"
-          />
-        </transition>
-      </keep-alive>
-    </div>
-    <div class="d-flex flex-row px-10 pb-10">
-      <v-btn
-        @click="handlePrev"
-        class="py-5 px-6 mx-2 flex-grow-1"
-        color="error"
-        outlined
-        depressed
-        rounded
-        :loading="backLoading"
+  <div class="d-flex flex-column pa-4 pink accent-1">
+    <v-card class="pt-6 px-6 white rounded-lg">
+      <v-form
+        id="form"
+        ref="form"
+        v-model="valid"
+        lazy-validation
+        @submit.prevent="handleSubmit"
       >
-        <span class="button font-weight-medium"> Back </span>
-      </v-btn>
-      <v-btn
-        @click="handleNext"
-        class="py-5 px-6 flex-grow-1"
-        depressed
-        rounded
-        color="secondary"
-        :loading="formLoading"
-      >
-        <span class="white--text button font-weight-medium"> Simpan </span>
-      </v-btn>
-    </div>
+        <p class="text-h5 font-weight-bold pink--text text--accent-1">
+          Kuisioner Pre-test
+        </p>
+        <v-divider class="mb-4" />
+        <Questions
+          :item="item"
+          :answerList="answerList"
+          v-for="(item, index) in questions"
+          :key="index"
+          :rules="[(v) => !!v || 'Jawaban diperlukan !']"
+        />
+        <v-divider class="mt-4" />
+        <v-card-actions class="py-3">
+          <v-spacer />
+          <v-btn text color="error" @click="handleBack">Cancel</v-btn>
+          <v-btn
+            text
+            color="secondary"
+            type="submit"
+            form="form"
+            :disabled="!valid"
+            :loading="formLoading"
+            >Submit</v-btn
+          >
+        </v-card-actions>
+      </v-form>
+    </v-card>
   </div>
 </template>
 
 <script>
-const Segmented = () => import("@/components/SegmentedProgressBar");
-const Logo = () => import("@/components/Logo");
-const First = () => import("@/views/Pretest/Questions/first");
-const Second = () => import("@/views/Pretest/Questions/second");
-const Third = () => import("@/views/Pretest/Questions/third");
-const Fourth = () => import("@/views/Pretest/Questions/fourth");
-const Fifth = () => import("@/views/Pretest/Questions/fifth");
-const Six = () => import("@/views/Pretest/Questions/six");
-const Seven = () => import("@/views/Pretest/Questions/seven");
-const Eight = () => import("@/views/Pretest/Questions/eight");
-const Nine = () => import("@/views/Pretest/Questions/nine");
-const Ten = () => import("@/views/Pretest/Questions/ten");
-const Eleven = () => import("@/views/Pretest/Questions/eleven");
-const Twelve = () => import("@/views/Pretest/Questions/twelve");
-const Thirteen = () => import("@/views/Pretest/Questions/thirteen");
-const Fourteen = () => import("@/views/Pretest/Questions/fourteen");
+const Questions = () => import("@/views/Pretest/Questions");
 
-import { SCREENING } from "@/router/name.types";
+import { TECHNIQUE } from "@/router/name.types";
 import MainService from "@/services/resources/main.service";
 
 export default {
   components: {
-    Segmented,
-    First,
-    Second,
-    Third,
-    Fourth,
-    Fifth,
-    Six,
-    Seven,
-    Eight,
-    Nine,
-    Ten,
-    Eleven,
-    Twelve,
-    Thirteen,
-    Fourteen,
-    Logo,
+    Questions,
   },
   data() {
     return {
-      id: this.$route.params?.secureId,
-      transitionName: "",
-      formLoading: false,
-      backLoading: false,
-      range: [
+      questions: [
         {
-          screen: "First",
-          active: true,
+          text:
+            "1. Kekhawatiran, mengantisipasi yang terburuk, antisipasi takut, cepat marah.",
+          answer: 1,
         },
         {
-          screen: "Second",
-          active: false,
+          text:
+            "2. Perasaan tegang, respon kaget, gemetar, mudah menangis, perasaan gelisah, ketidakmampuan untuk bersantai.",
+          answer: 1,
         },
         {
-          screen: "Third",
-          active: false,
+          text:
+            "3. Gelap, orang asing, ditinggal sendirian, hewan, lalu lintas, keramaian.",
+          answer: 1,
         },
         {
-          screen: "Fourth",
-          active: false,
+          text:
+            "4. Kesulitan untuk tertidur, terbangun pada malam hari, tidur tidak memuaskan dan kelelahan saat bangun tidur, mimpi buruk, teror malam.",
+          answer: 1,
         },
         {
-          screen: "Fifth",
-          active: false,
+          text: "5. Sulit berkonsentrasi, mudah lupa",
+          answer: 1,
         },
         {
-          screen: "Six",
-          active: false,
+          text:
+            "6. Hilangnya minat, berkurangnya kesenangan pada hobi, sedih, perasaan tidak menyenangkan sepanjang hari, bangun awal.",
+          answer: 1,
         },
         {
-          screen: "Seven",
-          active: false,
+          text:
+            "7. Rasa sakit dan nyeri, berkedut, kekakuan, gertakan gigi, suara gemetar, kedutan otot.",
+          answer: 1,
         },
         {
-          screen: "Eight",
-          active: false,
+          text:
+            "8. Perasaan ditusuk-tusuk, sensasi panas-dingin, penglihatan kabur, muka erah dan pucat serta merasa lemah.",
+          answer: 1,
         },
         {
-          screen: "Nine",
-          active: false,
+          text:
+            "9. Takikardi, menggigil, nyeri dada, denyut nadi mengeras, pingsan.",
+          answer: 1,
         },
         {
-          screen: "Ten",
-          active: false,
+          text:
+            "10. Rasa tertekan di dada, perasaan tercekik, tersedak, menarik napas panjang, nafas yang sulit.",
+          answer: 1,
         },
         {
-          screen: "Eleven",
-          active: false,
+          text:
+            "11. Sulit menelan, perut kembung, kepanasan, perut sebah, mual, muntah, kehilangan berat badan, sembelit.",
+          answer: 1,
         },
         {
-          screen: "Twelve",
-          active: false,
+          text: "12. Sering kencing, tidak dapat menahan kencing.",
+          answer: 1,
         },
         {
-          screen: "Thirteen",
-          active: false,
+          text:
+            "13. Mulut kering, mudah berkeringat, muka merah, pucat, pusing dan sakit kepala, rambut rontok.",
+          answer: 1,
         },
         {
-          screen: "Fourteen",
-          active: false,
+          text:
+            "14. Gelisah, mondar-mandir, jari-jari gemetar, mengkerutkan dahi atau kening, muka tegang, napas pendek dan cepat, wajah pucat, sering menelan.",
+          answer: 1,
         },
       ],
-      answer: {
-        question1: null,
-        question2: null,
-        question3: null,
-        question4: null,
-        question5: null,
-        question6: null,
-        question7: null,
-        question8: null,
-        question9: null,
-        question10: null,
-        question11: null,
-        question12: null,
-        question13: null,
-        question14: null,
-      },
+      answerList: [
+        { text: "(0) Tidak ada gejala (keluhan)", value: 0 },
+        { text: "(1) Satu dari gejala yang ada", value: 1 },
+        { text: "(2) Dua/separuh dari gejala yang ada", value: 2 },
+        { text: "(3) Lebih dari separuh gejala yang ada", value: 3 },
+        { text: "(4) Semua gejala ada", value: 4 },
+      ],
+      id: this.$route.params?.secureId,
+      backLoading: false,
+      formLoading: false,
+      valid: false,
     };
   },
-  computed: {
-    currentIndex() {
-      for (let i = 0; i < this.range.length; i++) {
-        if (this.range[i].active == false) return i;
-      }
-      return this.range.length;
-    },
-  },
   methods: {
+    handleBack() {
+      this.$router.back();
+    },
+    handleSubmit() {
+      if (this.$refs.form.validate()) {
+        let payload = {};
+        this.questions.map((e, i) => {
+          payload = { ...payload, [`question${i + 1}`]: e.answer };
+        });
+        this.insertData(this.id, payload);
+      }
+    },
     insertData(id, payload) {
       this.formLoading = true;
       MainService.insertPretest(id, payload)
         .then(({ data: { result, message } }) => {
           if (message == "OK") {
             this.$router.push({
-              name: SCREENING.COVER,
+              name: TECHNIQUE.LIST,
               params: { secureId: this.id },
             });
           } else {
@@ -186,30 +162,8 @@ export default {
         .catch((err) => console.error(err))
         .finally(() => (this.formLoading = false));
     },
-    handleNext() {
-      const pointer = this.currentIndex;
-      if (pointer >= 0 && pointer < this.range.length) {
-        this.range[pointer].active = true;
-        this.transitionName = "slide-left";
-      } else {
-        this.insertData(this.id, this.answer);
-      }
-    },
-    handlePrev() {
-      const pointer = this.currentIndex - 1;
-      if (pointer >= 1 && pointer < this.range.length) {
-        this.range[pointer].active = false;
-        this.transitionName = "slide-right";
-      } else {
-        this.backLoading = true;
-        setTimeout(() => {
-          this.backLoading = false;
-          this.$router.back();
-        }, 2000);
-      }
-    },
   },
 };
 </script>
 
-<style></style>
+<style scoped></style>

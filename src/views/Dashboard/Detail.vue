@@ -80,27 +80,6 @@
                   <td>{{ item.pretest }}</td>
                 </tr>
                 <SubList
-                  title="Screening"
-                  :show="show2"
-                  :available="
-                    item.screeningList && item.screeningList.length > 0
-                  "
-                  :click="() => (show2 = !show2)"
-                >
-                  <template v-slot:no-data>
-                    <span
-                      class="mb-0 text-subtitle"
-                      v-html="`No Screening Data`"
-                    ></span>
-                  </template>
-                </SubList>
-                <SubTable
-                  v-if="show2"
-                  :headers="screeningHeaders"
-                  :lists="item.screeningList"
-                  isDataTable
-                />
-                <SubList
                   title="Post-test"
                   :show="show3"
                   :available="item.postTestList && item.postTestList.length > 0"
@@ -197,7 +176,6 @@ export default {
         pretest: null,
         posttest: null,
         pretestList: [],
-        screeningList: [],
         postTestList: [],
       },
 
@@ -248,7 +226,6 @@ export default {
               e.no = i + 1;
               e.note = this.translateNote(e.answer);
             });
-            result.screeningList.map((e, i) => (e.no = i + 1));
             this.item = { ...this.item, ...result };
           } else {
             throw new Error(result);
