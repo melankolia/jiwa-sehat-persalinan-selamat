@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-content>
+    <v-main>
       <div class="d-flex flex-grow-1 flex-column my-10 mx-8">
         <p class="text-h5 font-weight-bold secondary--text">
           List Data Responden JSPS
@@ -77,7 +77,7 @@
           </v-btn>
         </div>
       </div>
-    </v-content>
+    </v-main>
     <Snackbar
       :show="visible"
       :message="message"

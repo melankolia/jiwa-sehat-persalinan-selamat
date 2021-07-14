@@ -17,7 +17,7 @@
           :answerList="answerList"
           v-for="(item, index) in questions"
           :key="index"
-          :rules="[(v) => !!v || 'Jawaban diperlukan !']"
+          :rules="[(v) => v == 0 || !!v || 'Jawaban diperlukan !']"
         />
         <v-divider class="mt-4" />
         <v-card-actions class="py-3">
@@ -54,70 +54,70 @@ export default {
         {
           text:
             "1. Kekhawatiran, mengantisipasi yang terburuk, antisipasi takut, cepat marah.",
-          answer: 1,
+          answer: null,
         },
         {
           text:
             "2. Perasaan tegang, respon kaget, gemetar, mudah menangis, perasaan gelisah, ketidakmampuan untuk bersantai.",
-          answer: 1,
+          answer: null,
         },
         {
           text:
             "3. Gelap, orang asing, ditinggal sendirian, hewan, lalu lintas, keramaian.",
-          answer: 1,
+          answer: null,
         },
         {
           text:
             "4. Kesulitan untuk tertidur, terbangun pada malam hari, tidur tidak memuaskan dan kelelahan saat bangun tidur, mimpi buruk, teror malam.",
-          answer: 1,
+          answer: null,
         },
         {
           text: "5. Sulit berkonsentrasi, mudah lupa",
-          answer: 1,
+          answer: null,
         },
         {
           text:
             "6. Hilangnya minat, berkurangnya kesenangan pada hobi, sedih, perasaan tidak menyenangkan sepanjang hari, bangun awal.",
-          answer: 1,
+          answer: null,
         },
         {
           text:
             "7. Rasa sakit dan nyeri, berkedut, kekakuan, gertakan gigi, suara gemetar, kedutan otot.",
-          answer: 1,
+          answer: null,
         },
         {
           text:
             "8. Perasaan ditusuk-tusuk, sensasi panas-dingin, penglihatan kabur, muka erah dan pucat serta merasa lemah.",
-          answer: 1,
+          answer: null,
         },
         {
           text:
             "9. Takikardi, menggigil, nyeri dada, denyut nadi mengeras, pingsan.",
-          answer: 1,
+          answer: null,
         },
         {
           text:
             "10. Rasa tertekan di dada, perasaan tercekik, tersedak, menarik napas panjang, nafas yang sulit.",
-          answer: 1,
+          answer: null,
         },
         {
           text:
             "11. Sulit menelan, perut kembung, kepanasan, perut sebah, mual, muntah, kehilangan berat badan, sembelit.",
-          answer: 1,
+          answer: null,
         },
         {
           text: "12. Sering kencing, tidak dapat menahan kencing.",
-          answer: 1,
+          answer: null,
         },
         {
           text:
             "13. Mulut kering, mudah berkeringat, muka merah, pucat, pusing dan sakit kepala, rambut rontok.",
-          answer: 1,
+          answer: null,
         },
         {
           text:
             "14. Gelisah, mondar-mandir, jari-jari gemetar, mengkerutkan dahi atau kening, muka tegang, napas pendek dan cepat, wajah pucat, sering menelan.",
-          answer: 1,
+          answer: null,
         },
       ],
       answerList: [
