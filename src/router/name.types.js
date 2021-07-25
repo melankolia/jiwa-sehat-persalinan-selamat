@@ -32,6 +32,12 @@ export const TECHNIQUE = {
     FIRST: `${technique}.detail.first`,
     SECOND: `${technique}.detail.second`,
     THIRD: `${technique}.detail.third`,
+    FOURTH: {
+      TRIMESTERI: `${technique}.trimester.i`,
+      TRIMESTERII: `${technique}.trimester.ii`,
+      TRIMESTERIII: `${technique}.trimester.iii`,
+      DANGER: `${technique}.danger`,
+    },
   },
 };
 
@@ -42,4 +48,4 @@ const dashboard = "dashboard";
 export const DASHBOARD = {
   ROOT: `${dashboard}`,
   DETAIL: `${dashboard}.detail`,
-}
+};

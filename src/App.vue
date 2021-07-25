@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <FloatingScrollButton />
     <v-expand-transition>
       <Appbar v-if="isDashboard" />
     </v-expand-transition>
@@ -11,11 +12,13 @@
 
 <script>
 const Appbar = () => import("@/components/Appbar");
+const FloatingScrollButton = () => import("@/components/Button/FloatingScroll");
 import { DASHBOARD } from "@/router/name.types";
 
 export default {
   components: {
     Appbar,
+    FloatingScrollButton,
   },
   data() {
     return {

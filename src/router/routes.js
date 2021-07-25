@@ -12,6 +12,13 @@ const Technique = () => import("@/views/Technique");
 const FirstTechnique = () => import("@/views/Technique/Detail/First");
 const SecondTechnique = () => import("@/views/Technique/Detail/Second");
 const ThirdTechnique = () => import("@/views/Technique/Detail/Third");
+const TrimesterITechnique = () =>
+  import("@/views/Technique/Detail/Fourth/trimesterI");
+const TrimesterIITechnique = () =>
+  import("@/views/Technique/Detail/Fourth/trimesterII");
+const TrimesterIIITechnique = () =>
+  import("@/views/Technique/Detail/Fourth/trimesterIII");
+const DangerTechnique = () => import("@/views/Technique/Detail/Fourth/danger");
 const Login = () => import("@/views/Login");
 const Dashboard = () => import("@/views/Dashboard");
 const Detail = () => import("@/views/Dashboard/Detail");
@@ -169,6 +176,46 @@ export const routes = [
               title: TECHNIQUE.DETAIL.THIRD,
               stack: 11,
               text: "Relaksasi Otot Progresif (ROP)",
+            },
+          },
+          {
+            path: "trimester-1",
+            name: TECHNIQUE.DETAIL.FOURTH.TRIMESTERI,
+            component: TrimesterITechnique,
+            meta: {
+              title: TECHNIQUE.DETAIL.FOURTH.TRIMESTERI,
+              stack: 11,
+              text: "Adaptasi Ketidaknyamanan pada Kehamilan Trimester I",
+            },
+          },
+          {
+            path: "trimester-2",
+            name: TECHNIQUE.DETAIL.FOURTH.TRIMESTERII,
+            component: TrimesterIITechnique,
+            meta: {
+              title: TECHNIQUE.DETAIL.FOURTH.TRIMESTERII,
+              stack: 11,
+              text: "Adaptasi Ketidaknyamanan pada Kehamilan Trimester II",
+            },
+          },
+          {
+            path: "trimester-3",
+            name: TECHNIQUE.DETAIL.FOURTH.TRIMESTERIII,
+            component: TrimesterIIITechnique,
+            meta: {
+              title: TECHNIQUE.DETAIL.FOURTH.TRIMESTERIII,
+              stack: 11,
+              text: "Adaptasi Ketidaknyamanan pada Kehamilan Trimester III",
+            },
+          },
+          {
+            path: "danger",
+            name: TECHNIQUE.DETAIL.FOURTH.DANGER,
+            component: DangerTechnique,
+            meta: {
+              title: TECHNIQUE.DETAIL.FOURTH.DANGER,
+              stack: 11,
+              text: "Deteksi Dini Tanda-Tanda Bahaya Kehamilan",
             },
           },
         ],

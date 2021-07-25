@@ -15,16 +15,16 @@
 export default {
   props: {
     isBorder: { types: Boolean, required: true, default: true },
-    top: { types: Number, required: false, default: "2.5" },
-    right: { types: Number, required: false, default: "2.5" },
+    top: { types: Number, required: false, default: "40" },
+    right: { types: Number, required: false, default: "40" },
     position: { type: String, required: false, default: "absolute" },
   },
   computed: {
     styling() {
       return `position: absolute; 
               z-index: 9999;
-              top: ${this.top}%; 
-              right: ${this.right}%;`;
+              top: 20px; 
+              right: 20px;`;
     },
   },
 };
