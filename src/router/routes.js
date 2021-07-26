@@ -4,8 +4,6 @@ const Agreement = () => import("@/views/Agreement");
 const Identity = () => import("@/views/Identity");
 const Pretest = () => import("@/views/Pretest/CoverScreen");
 const PretestStepper = () => import("@/views/Pretest");
-const Screening = () => import("@/views/Screening/CoverScreen");
-const ScreeningStepper = () => import("@/views/Screening");
 const Posttest = () => import("@/views/Posttest/CoverScreen");
 const PosttestStepper = () => import("@/views/Posttest");
 const Technique = () => import("@/views/Technique");
@@ -28,7 +26,6 @@ import {
   AGREEMENT,
   IDENTITY,
   PRETEST,
-  SCREENING,
   POSTTEST,
   TECHNIQUE,
   LOGIN,
@@ -96,36 +93,6 @@ export const routes = [
               title: PRETEST.ROOT,
               stack: 4,
               text: "Kueioner Pre-test",
-            },
-          },
-        ],
-      },
-      {
-        path: "/screening/:secureId",
-        component: {
-          render(c) {
-            return c("router-view");
-          },
-        },
-        children: [
-          {
-            path: "",
-            name: SCREENING.STEPPER,
-            component: ScreeningStepper,
-            meta: {
-              title: SCREENING.ROOT,
-              stack: 7,
-              text: "Screening",
-            },
-          },
-          {
-            path: "cover",
-            name: SCREENING.COVER,
-            component: Screening,
-            meta: {
-              title: SCREENING.ROOT,
-              stack: 6,
-              text: "Screening",
             },
           },
         ],
