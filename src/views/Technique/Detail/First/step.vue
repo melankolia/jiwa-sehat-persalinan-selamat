@@ -7,6 +7,8 @@
       :key="i"
     >
       <v-card-title class="py-0 px-2">
+        <v-img v-if="i == 1" :src="Picture1" />
+        <v-img v-else-if="i == 3" :src="Picture2" />
         <v-card-title class="text-h6 blue-grey--text">
           Step {{ i + 1 }}
         </v-card-title>
@@ -19,9 +21,14 @@
 </template>
 
 <script>
+import Picture1 from "@/assets/examples/Picture1.png";
+import Picture2 from "@/assets/examples/Picture2.png";
+
 export default {
   data() {
     return {
+      Picture1,
+      Picture2,
       steps: [
         `Berbaring atau duduk tenang: posisikan diri anda senyaman mungkin.`,
         `Tarik napas melalui hidung: Anda dapat menutup mata untuk mencegah
