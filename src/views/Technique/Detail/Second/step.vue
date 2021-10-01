@@ -7,6 +7,10 @@
       :key="i"
     >
       <v-card-title class="py-0 px-2">
+        <v-img v-if="i == 3" :src="E1" />
+        <v-img v-else-if="i == 4" :src="E2" />
+        <v-img v-else-if="i == 5" :src="E3" />
+        <v-img v-else-if="i == 6" :src="E4" />
         <v-card-title class="text-h6 blue-grey--text">
           Step {{ i + 1 }}
         </v-card-title>
@@ -19,9 +23,18 @@
 </template>
 
 <script>
+import E1 from "@/assets/examples/e1.png";
+import E2 from "@/assets/examples/e2.png";
+import E3 from "@/assets/examples/e3.png";
+import E4 from "@/assets/examples/e4.png";
+
 export default {
   data() {
     return {
+      E1,
+      E2,
+      E3,
+      E4,
       steps: [
         `Fokuskan pandangan dan pikiran ke lima jari.`,
         `Taris napas dalam-dalam, lalu pejamkan mata dan kosongkan pikiran.`,

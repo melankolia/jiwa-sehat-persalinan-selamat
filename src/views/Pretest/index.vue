@@ -35,11 +35,31 @@
         </v-card-actions>
       </v-form>
     </v-card>
+    <TestResult
+      :visible="visible"
+      title="Hasil Screening Pretest"
+      :description="dialogDescription"
+      :onClose="handleDialogClose"
+      :color="checkColor"
+      :icon="checkIcon"
+    >
+      <template #action>
+        <v-btn
+          block
+          outlined
+          class="mt-10"
+          color="white"
+          @click="handleDialogClose"
+          >OK</v-btn
+        >
+      </template>
+    </TestResult>
   </div>
 </template>
 
 <script>
 const Questions = () => import("@/views/Pretest/Questions");
+const TestResult = () => import("@/components/Dialog/TestResult");
 
 import { TECHNIQUE } from "@/router/name.types";
 import MainService from "@/services/resources/main.service";
@@ -47,6 +67,7 @@ import MainService from "@/services/resources/main.service";
 export default {
   components: {
     Questions,
+    TestResult,
   },
   data() {
     return {
@@ -131,6 +152,8 @@ export default {
       backLoading: false,
       formLoading: false,
       valid: false,
+      visible: false,
+      totalPretest: 0,
     };
   },
   methods: {
@@ -143,24 +166,65 @@ export default {
         this.questions.map((e, i) => {
           payload = { ...payload, [`question${i + 1}`]: e.answer };
         });
-        this.insertData(this.id, payload);
+        const Total = Object.values(payload).reduce((a, b) => a + b);
+        this.insertData(this.id, payload, Total);
       }
     },
-    insertData(id, payload) {
+    insertData(id, payload, Total) {
       this.formLoading = true;
       MainService.insertPretest(id, payload)
         .then(({ data: { result, message } }) => {
           if (message == "OK") {
-            this.$router.push({
-              name: TECHNIQUE.LIST,
-              params: { secureId: this.id },
-            });
+            this.totalPretest = Total;
+            this.visible = true;
           } else {
             throw new Error(result);
           }
         })
         .catch((err) => console.error(err))
         .finally(() => (this.formLoading = false));
+    },
+    handleDialogClose() {
+      this.$router.push({
+        name: TECHNIQUE.LIST,
+        params: { secureId: this.id },
+      });
+      this.visible = false;
+    },
+  },
+  computed: {
+    dialogDescription() {
+      if (this.totalPretest < 14) return "Tidak ada kecemasan";
+      else if (this.totalPretest >= 14 && this.totalPretest <= 20)
+        return "Kecemasan ringan";
+      else if (this.totalPretest >= 21 && this.totalPretest <= 27)
+        return "Kecemasan sedang";
+      else if (this.totalPretest >= 28 && this.totalPretest <= 41)
+        return "Kecemasan berat";
+      else if (this.totalPretest >= 42) return "Panik";
+      return "Tidak ada kecemasan";
+    },
+    checkColor() {
+      if (this.totalPretest < 14) return "pink accent-1";
+      else if (this.totalPretest >= 14 && this.totalPretest <= 20)
+        return "blue lighten-1";
+      else if (this.totalPretest >= 21 && this.totalPretest <= 27)
+        return "yellow darken-3";
+      else if (this.totalPretest >= 28 && this.totalPretest <= 41)
+        return "pink";
+      else if (this.totalPretest >= 42) return "red";
+      return "pink accent-1";
+    },
+    checkIcon() {
+      if (this.totalPretest < 14) return "sentiment_very_satisfied";
+      else if (this.totalPretest >= 14 && this.totalPretest <= 20)
+        return "sentiment_satisfied_alt";
+      else if (this.totalPretest >= 21 && this.totalPretest <= 27)
+        return "sentiment_neutral";
+      else if (this.totalPretest >= 28 && this.totalPretest <= 41)
+        return "sentiment_dissatisfied";
+      else if (this.totalPretest >= 42) return "sentiment_very_dissatisfied";
+      return "sentiment_very_satisfied";
     },
   },
 };
