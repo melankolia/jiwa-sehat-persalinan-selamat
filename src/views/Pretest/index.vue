@@ -186,7 +186,7 @@ export default {
     },
     handleDialogClose() {
       this.$router.push({
-        name: TECHNIQUE.LIST,
+        name: TECHNIQUE.PREGNANT_INFO,
         params: { secureId: this.id },
       });
       this.visible = false;

@@ -6,6 +6,7 @@ const Pretest = () => import("@/views/Pretest/CoverScreen");
 const PretestStepper = () => import("@/views/Pretest");
 const Posttest = () => import("@/views/Posttest/CoverScreen");
 const PosttestStepper = () => import("@/views/Posttest");
+const PregnantInfo = () => import("@/views/Technique/PregnantInfo");
 const Technique = () => import("@/views/Technique");
 const FirstTechnique = () => import("@/views/Technique/Detail/First");
 const SecondTechnique = () => import("@/views/Technique/Detail/Second");
@@ -107,11 +108,21 @@ export const routes = [
         children: [
           {
             path: "",
+            name: TECHNIQUE.PREGNANT_INFO,
+            component: PregnantInfo,
+            meta: {
+              title: TECHNIQUE.PREGNANT_INFO,
+              stack: 9,
+              text: "Informasi Seputar Kehamilan",
+            },
+          },
+          {
+            path: "technique",
             name: TECHNIQUE.LIST,
             component: Technique,
             meta: {
               title: TECHNIQUE.LIST,
-              stack: 8,
+              stack: 10,
               text: "Teknik Mengatasi Kecemasan dalam Menghadapi Persalinan",
             },
           },
@@ -121,7 +132,7 @@ export const routes = [
             component: FirstTechnique,
             meta: {
               title: TECHNIQUE.DETAIL.FIRST,
-              stack: 9,
+              stack: 11,
               text: "Relaksasi Napas Dalam",
             },
           },
@@ -131,7 +142,7 @@ export const routes = [
             component: SecondTechnique,
             meta: {
               title: TECHNIQUE.DETAIL.SECOND,
-              stack: 10,
+              stack: 12,
               text: "Latihan Hipnotis Lima Jari",
             },
           },
@@ -141,7 +152,7 @@ export const routes = [
             component: ThirdTechnique,
             meta: {
               title: TECHNIQUE.DETAIL.THIRD,
-              stack: 11,
+              stack: 13,
               text: "Relaksasi Otot Progresif (ROP)",
             },
           },
@@ -151,7 +162,7 @@ export const routes = [
             component: TrimesterITechnique,
             meta: {
               title: TECHNIQUE.DETAIL.FOURTH.TRIMESTERI,
-              stack: 11,
+              stack: 14,
               text: "Adaptasi Ketidaknyamanan pada Kehamilan Trimester I",
             },
           },
@@ -161,7 +172,7 @@ export const routes = [
             component: TrimesterIITechnique,
             meta: {
               title: TECHNIQUE.DETAIL.FOURTH.TRIMESTERII,
-              stack: 11,
+              stack: 15,
               text: "Adaptasi Ketidaknyamanan pada Kehamilan Trimester II",
             },
           },
@@ -171,7 +182,7 @@ export const routes = [
             component: TrimesterIIITechnique,
             meta: {
               title: TECHNIQUE.DETAIL.FOURTH.TRIMESTERIII,
-              stack: 11,
+              stack: 16,
               text: "Adaptasi Ketidaknyamanan pada Kehamilan Trimester III",
             },
           },
@@ -181,7 +192,7 @@ export const routes = [
             component: DangerTechnique,
             meta: {
               title: TECHNIQUE.DETAIL.FOURTH.DANGER,
-              stack: 11,
+              stack: 17,
               text: "Deteksi Dini Tanda-Tanda Bahaya Kehamilan",
             },
           },
@@ -201,7 +212,7 @@ export const routes = [
             component: PosttestStepper,
             meta: {
               title: POSTTEST.ROOT,
-              stack: 13,
+              stack: 18,
               text: "Post-test",
             },
           },
@@ -211,7 +222,7 @@ export const routes = [
             component: Posttest,
             meta: {
               title: POSTTEST.ROOT,
-              stack: 12,
+              stack: 19,
               text: "Post-test",
             },
           },

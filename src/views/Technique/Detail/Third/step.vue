@@ -6,12 +6,12 @@
       v-for="(element, i) in steps"
       :key="i"
     >
+      <p
+        class="text-subtitle-1 font-weight-medium blue-grey--text pt-2 mx-4 mb-2"
+      >
+        {{ element.title }}
+      </p>
       <v-card-title class="py-0 px-2">
-        <v-card-title
-          class="text-subtitle-1 font-weight-medium blue-grey--text"
-        >
-          {{ element.title }}
-        </v-card-title>
         <v-spacer />
         <v-btn
           @click="element.expand = !element.expand"
@@ -30,20 +30,27 @@
           <v-img class="ma-2" v-if="element.image" :src="element.image" />
           <v-img class="ma-2" v-if="element.image2" :src="element.image2" />
           <template v-if="element.desc">
-            <v-card-subtitle class="blue-grey--text">
+            <v-card-subtitle
+              class="text-body-2 text-justify font-font-weight-thin blue-grey--text darken-2 px-6"
+              :key="`sub1-${i}`"
+            >
               {{ element.desc }}
             </v-card-subtitle>
           </template>
           <template v-else-if="element.sub" v-for="(item, i) in element.sub">
-            <v-card-title :key="i">
-              <v-card-title class="text-h6 blue-grey--text">
-                {{ item.title }}
-              </v-card-title>
-              <v-img v-if="item.image" :src="item.image" />
-              <v-card-subtitle class="blue-grey--text">
-                {{ item.desc }}
-              </v-card-subtitle>
-            </v-card-title>
+            <p
+              class="text-h6 text-justify blue-grey--text px-4 my-4"
+              :key="`title-${i}`"
+            >
+              {{ item.title }}
+            </p>
+            <v-img v-if="item.image" :src="item.image" :key="`image-${i}`" />
+            <v-card-subtitle
+              class="text-body-2 text-justify font-font-weight-thin blue-grey--text darken-2 px-6 my-2"
+              :key="`sub-${i}`"
+            >
+              {{ item.desc }}
+            </v-card-subtitle>
             <v-divider v-if="(i + 1) % 2 != 0" :key="item.title + i" />
           </template>
         </div>
