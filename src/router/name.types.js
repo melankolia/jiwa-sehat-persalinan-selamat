@@ -28,6 +28,7 @@ const technique = "technique";
 export const TECHNIQUE = {
   ROOT: `${technique}`,
   LIST: `${technique}.list`,
+  PREGNANT_INFO: `${technique}.pregnant.info`,
   DETAIL: {
     FIRST: `${technique}.detail.first`,
     SECOND: `${technique}.detail.second`,

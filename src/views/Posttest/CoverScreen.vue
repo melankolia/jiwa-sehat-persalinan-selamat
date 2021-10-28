@@ -1,7 +1,7 @@
 <template>
   <Cover
     title="Kuisioner Post-test"
-    description="Berikut terdapat beberapa frasa yang menggambarkan perasaan yang dialami seseorang. Silahkan menjawab dengan memberikan skor pada setiap frasa atau pernyataan yang menunjukkan perasaan selama seminggu terakhir."
+    description="Setelah ibu melakukan semua teknik mengatasi cemas di atas, maka silahkan isi kuesioner ini"
     titleButton="Isi Kuisioner"
     :formLoading="formLoading"
     :handleNext="handleNext"

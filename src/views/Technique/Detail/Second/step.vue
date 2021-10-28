@@ -14,10 +14,12 @@
         <v-card-title class="text-h6 blue-grey--text">
           Step {{ i + 1 }}
         </v-card-title>
-        <v-card-subtitle class="blue-grey--text">
-          {{ element }}
-        </v-card-subtitle>
       </v-card-title>
+      <v-card-subtitle
+        class="text-body-2 text-justify font-font-weight-thin blue-grey--text darken-2 px-6"
+      >
+        {{ element }}
+      </v-card-subtitle>
     </v-card>
   </div>
 </template>
