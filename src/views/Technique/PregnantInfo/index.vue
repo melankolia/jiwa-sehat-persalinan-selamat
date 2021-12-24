@@ -88,7 +88,7 @@
           />
         </div>
         <span class="white--text font-weight-medium">
-          Adaptasi Ketidaknyamanan pada Kehamilan Trimester III
+          Deteksi Dini Tanda-Tanda Bahaya Kehamilan
         </span>
         <div class="d-flex flex-row align-center justify-end flex-grow-1 px-4">
           <v-icon dark medium> chevron_right </v-icon>
